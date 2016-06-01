@@ -1,5 +1,5 @@
 
-package com.cy.test.controller;
+package com.cy.test.rocedar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.test.result.BasicResult;
-import com.cy.test.service.HuaxinService;
+import com.cy.test.rocedar.service.HuaxinService;
 
 @RestController
 public class TestHuaxinController {

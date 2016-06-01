@@ -1,5 +1,5 @@
 
-package com.cy.test.service.impl;
+package com.cy.test.rocedar.service.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.cy.test.result.BasicResult;
-import com.cy.test.service.HuaxinService;
+import com.cy.test.rocedar.service.HuaxinService;
 
 @Service("deviceService")
 public class HuaxinServiceImpl implements HuaxinService {
