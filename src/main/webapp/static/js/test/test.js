@@ -2,15 +2,15 @@
  * http://usejsdoc.org/
  */
 $(document).ready(function(){
-    alert(1)
+    
 	$("#popAlert").hide();
-	$("#connectBtn").click(function(){
-		var name = $("#name").val().trim();
-		var passwd = $("#passwd").val().trim();
-		if(name == "" || passwd == "" || name == "请输入用户名" || passwd == "请输入密码"){
-			showWeakAlert("用户名和密码不能为空");
+	$("#smsBtn").click(function(){
+		var phone = $("#phone").val().trim();
+		var verification = $("#verification").val().trim();
+		if(phone == "" || verification == "" || phone == "请输入用户名" || verification == "请输入密码"){
+			alert("phone or verification is null");
 		} else {
-			connectDevice(name, passwd);
+		    smsSend(phone, verification);
 		}
 	});
 	
@@ -20,20 +20,20 @@ $(document).ready(function(){
 });
 
 /**
- * 连接设备
+ * 调用test接口
  * 
  * @param name
  * @param passwd
  * @returns
  */
-function connectDevice(name, passwd){
+function smsSend(phone, verification){
 	$.ajax({
-	     url: "/test/",
+	     url: rootpath + "/huaxin/sms/",
          type: "GET",
          dataType: "json",
          data: {
-        	 username: name,
-        	 passwd:passwd
+        	 phone: phone,
+        	 verification:verification
          },
          success: function (data) {
              alert(data)

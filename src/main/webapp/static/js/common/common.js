@@ -1,3 +1,7 @@
+ //获取web应用上下文
+var rootpath="/"+document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).substring(document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).indexOf('/')+1,document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).length).substring(0,document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).substring(document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).indexOf('/')+1,document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).length).indexOf('/'));
+
+/////////////////////////////////////////
 
 var dongya = {
 	upyunPre: "http://img.dongya.rocedar.com",
