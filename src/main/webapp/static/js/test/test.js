@@ -36,11 +36,11 @@ function smsSend(phone, verification){
         	 verification:verification
          },
          success: function (data) {
-             alert(data)
-             if(data.status === 0){
-                 alert(1)
+             if(data.status == 0){
+                 $("#resultDiv").html(data.msg);
              }else{
-            	 alert(2)
+                 alert("失败")
+                 $("#resultDiv").html(data.msg);
              }
          }
 	});
