@@ -13,7 +13,9 @@ import org.apache.commons.jxpath.xml.DOMParser;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -28,6 +30,8 @@ import com.cy.test.service.HuaxinService;
 @Service("deviceService")
 public class HuaxinServiceImpl implements HuaxinService {
     private Logger logger = LogManager.getLogger(HuaxinServiceImpl.class);
+  
+    
     @Override
     public BasicResult sendVerification(List<String> phones, String verification) {
        return sendVerification(String.join(",", phones), verification);
@@ -78,6 +82,55 @@ public class HuaxinServiceImpl implements HuaxinService {
                 }
             } catch (IOException e) {
                 logger.error("华信验证码发送:关闭响应流失败", e);
+                return new BasicResult(3,result);
+            }
+        }
+        return new BasicResult(0,result);
+    }
+    
+    @Override
+    public BasicResult sendVoiceVerification(String phone,String verification){
+        String voiceUrl = "http://111.206.219.17/c-pt/pt/interface.php";
+        String username = "yAA0064";
+        String password = "006466";
+        String callid =  "01083320219";
+        String result = "";
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        // 添加发送参数
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("username", username));
+        params.add(new BasicNameValuePair("password", password));
+        params.add(new BasicNameValuePair("action", "captcha"));
+        params.add(new BasicNameValuePair("called", phone));
+        params.add(new BasicNameValuePair("callid", callid));
+        params.add(new BasicNameValuePair("captcha", verification));
+        CloseableHttpResponse response = null;
+        try {
+            URIBuilder uri = new URIBuilder(voiceUrl);
+            if (params != null) {
+                uri.setParameters(params);
+            }
+            HttpGet hg = new HttpGet(uri.build().toString());
+            response = httpClient.execute(hg);
+            result = EntityUtils.toString(response.getEntity());
+            ByteArrayInputStream in = new ByteArrayInputStream(result.trim().getBytes("UTF-8"));
+            Object xmlObject = new DOMParser().parseXML(in);
+              JXPathContext ctx = JXPathContext.newContext(xmlObject);
+              String returnstatus = (String)ctx.getValue("data/code");
+            if (!"1".equals(returnstatus)) {
+                logger.error("华信语音验证码（{}）发送（{}）:短信服务商返回发送失败 --> {}", verification, phone, result);
+                return new BasicResult(1,result);
+            }
+        } catch (Exception e) {
+            logger.error("华信语音验证码（{}）发送（{}）:发送短信失败", verification, phone, e);
+            return new BasicResult(2,result);
+        } finally {
+            try {
+                if (response != null) {
+                    response.close();
+                }
+            } catch (IOException e) {
+                logger.error("华信语音验证码发送:关闭响应流失败", e);
                 return new BasicResult(3,result);
             }
         }

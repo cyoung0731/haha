@@ -24,16 +24,16 @@ public class TestHuaxinController {
     private HuaxinService huaxinService;
 
     /**
-     * 获取设备列表
+     * 发送短信
      * 
-     * @param userId
-     * @param taskId
+     * @param phone
+     * @param verification
      * @return
      */
     @RequestMapping(value = "/huaxin/sms/", method = RequestMethod.GET)
-    public BasicResult getDeviceList(@RequestParam(value = "phone", defaultValue = "-1") String phone,
+    public BasicResult sendSms(@RequestParam(value = "phone", defaultValue = "-1") String phone,
             @RequestParam(value = "verification", defaultValue = "-1") String verification) {
-        logger.debug("-----hahahaha-----");
+        logger.debug("-----sendSms-----");
         logger.debug("---phone={}", phone);
         logger.debug("---verification={}", verification);
         List<String> phoneList = new ArrayList<String>();
@@ -41,7 +41,24 @@ public class TestHuaxinController {
         for (int i = 0; i < phones.length; i++) {
             phoneList.add(phones[i]);
         }
-        
+
         return huaxinService.sendVerification(phoneList, verification);
+    }
+    
+    
+    /**
+     * 发送语音验证码
+     * 
+     * @param phone
+     * @param verification
+     * @return
+     */
+    @RequestMapping(value = "/huaxin/voice/", method = RequestMethod.GET)
+    public BasicResult sendVoice(@RequestParam(value = "phone", defaultValue = "-1") String phone,
+            @RequestParam(value = "verification", defaultValue = "-1") String verification) {
+        logger.debug("-----sendVoice-----");
+        logger.debug("---phone={}", phone);
+        logger.debug("---verification={}", verification);
+        return huaxinService.sendVoiceVerification(phone, verification);
     }
 }

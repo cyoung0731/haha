@@ -11,7 +11,16 @@ public interface HuaxinService {
      * 
      * @param phones
      * @param verification
-     * @return 
+     * @return
      */
     BasicResult sendVerification(List<String> phones, String verification);
+
+    /**
+     * 发送语音验证码
+     * 
+     * @param phone
+     * @param verification
+     * @return
+     */
+    BasicResult sendVoiceVerification(String phone, String verification);
 }
