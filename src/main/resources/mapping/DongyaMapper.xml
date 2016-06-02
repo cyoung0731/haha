@@ -2,3 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.test.dao.rocedar.DongyaMapper">
+
+    <select id="selectUseridByPhone" resultType="java.lang.String">
+        select user_id from dy_user_user where phone = #{phone}
+    </select>
+</mapper>

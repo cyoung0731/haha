@@ -3,55 +3,35 @@
  */
 $(document).ready(
         function() {
-            $("#smsBtn").click(
+            var phone = $("#phone").val().trim();
+            $("#getUseridByPhoneBtn").click(
                     function() {
-                        var phone = $("#phone").val().trim();
-                        var verification = $("#verification").val().trim();
-                        if (phone == "" || verification == ""
-                                || phone == "请输入手机号"
-                                || verification == "请输入验证码") {
-                            alert("phone or verification is null");
-                        } else {
-                            smsSend(phone, verification);
-                        }
-                    });
-
-            $("#voiceBtn").click(
-                    function() {
-                        var phone = $("#phone").val().trim();
-                        var verification = $("#verification").val().trim();
-                        if (phone == "" || verification == ""
-                                || phone == "请输入手机号"
-                                || verification == "请输入验证码") {
-                            alert("phone or verification is null");
-                        } else {
-                            voiceSend(phone, verification);
-                        }
+                        getUseridByPhone(phone);
                     });
         });
 
 /**
- * 调用发送短信接口
+ * getUserid
  * 
  * @param name
  * @param passwd
  * @returns
  */
-function smsSend(phone, verification) {
+function getUseridByPhone(phone) {
     $.ajax({
-        url : rootpath + "/huaxin/sms/",
+        url : rootpath + "/dongya/getUseridByPhone/",
         type : "GET",
         dataType : "json",
         data : {
             phone : phone,
-            verification : verification
         },
         success : function(data) {
             if (data.status == 0) {
-                $("#resultDiv").html(data.msg);
+                alert(data.result.userid)
+                $("#useridDiv").html(data);
             } else {
                 alert("失败")
-                $("#resultDiv").html(data.msg);
+                $("#useridDiv").html(data.msg);
             }
         }
     });

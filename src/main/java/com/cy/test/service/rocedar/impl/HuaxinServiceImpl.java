@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 import com.cy.test.result.BasicResult;
 import com.cy.test.service.rocedar.HuaxinService;
 
-@Service("deviceService")
+@Service("huaxinService")
 public class HuaxinServiceImpl implements HuaxinService {
     private Logger logger = LogManager.getLogger(HuaxinServiceImpl.class);
   
