@@ -7,7 +7,7 @@ public class BasicResult {
 	public String msg;
 	
 	public BasicResult(int status){
-		this.status = status;
+		this.status = status; 
 		this.msg = "test";
 //		this.msg = ResultCode.getMsg(status);
 	}
