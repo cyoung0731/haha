@@ -27,11 +27,10 @@ function getUseridByPhone(phone) {
         },
         success : function(data) {
             if (data.status == 0) {
-                alert(data.result.userid)
-                $("#useridDiv").html(data);
+                
+                $("#useridInput").val(data.result.userid);
             } else {
                 alert("失败")
-                $("#useridDiv").html(data.msg);
             }
         }
     });

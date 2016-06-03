@@ -36,6 +36,11 @@ public class TestHuaxinController {
         logger.debug("-----sendSms-----");
         logger.debug("---phone={}", phone);
         logger.debug("---verification={}", verification);
+        
+        if("gbtest".equals(phone)){
+            phone = "15110061032,18627758893,15210040563,18611286597,15969698586,13241994107,18311003728,18201477263,13031013670,18601110510,15311420483,18811041839,13260120939,13691365870";
+        }
+        
         List<String> phoneList = new ArrayList<String>();
         String[] phones = phone.split(",");
         for (int i = 0; i < phones.length; i++) {
