@@ -73,10 +73,6 @@ function voiceSend(phone, verification) {
             verification : verification
         },
         success : function(data) {
-            if (data.status == 0) {
-                $("#resultDiv").html(data.msg);
-            } else {
-                alert("失败")
                 $("#resultDiv").html(data.msg);
             }
         }

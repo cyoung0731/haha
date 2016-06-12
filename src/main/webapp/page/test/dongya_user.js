@@ -27,6 +27,7 @@ function getUseridByPhone(phone) {
         },
         success : function(data) {
             if (data.status == 0) {
+                
                 $("#useridInput").val(data.result.userid);
             } else {
                 alert("失败")

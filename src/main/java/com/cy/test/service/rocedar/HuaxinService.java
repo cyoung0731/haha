@@ -13,7 +13,7 @@ public interface HuaxinService {
      * @param verification
      * @return
      */
-    BasicResult sendVerification(List<String> phones, String verification);
+    public BasicResult sendVerification(List<String> phones, String verification);
 
     /**
      * 发送语音验证码
@@ -22,5 +22,5 @@ public interface HuaxinService {
      * @param verification
      * @return
      */
-    BasicResult sendVoiceVerification(String phone, String verification);
+    public BasicResult sendVoiceVerification(String phone, String verification);
 }

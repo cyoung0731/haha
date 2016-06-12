@@ -1,4 +1,4 @@
-package com.cy.test.controller.rocedar;
+package com.cy.test.controller.huanyi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,50 +9,32 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cy.test.result.JsonObjectResult;
-import com.cy.test.service.rocedar.DongyaService;
 import com.cy.util.CyUtil;
 
 import net.sf.json.JSONObject;
 
 @RestController
-public class DongyaController {
-    private Logger logger = LogManager.getLogger(DongyaController.class);
-    
-    @Autowired
-    private DongyaService dongyaService;
-    
+public class FangzhouController {
+
+    private static Logger logger = LogManager.getLogger(FangzhouController.class);
+
     /**
-     * 根据手机号查询userid
-     * @param phone
-     * @return
-     */
-    @RequestMapping(value = "/dongya/getUseridByPhone/", method = RequestMethod.GET)
-    public JsonObjectResult getUseridByPhone(@RequestParam(value = "phone", defaultValue = "-1") String phone) {
-        dongyaService.getUseridByPhone(phone);
-        JSONObject result = new JSONObject();
-        result.put("userid", dongyaService.getUseridByPhone(phone));
-        return new JsonObjectResult(0,result);
-    }
-    
-    /**
-     * 动吖内网测试环境-设备列表接口
+     * 测试设备列表接口
      * 
      * @param phone
      * @return
      */
-    @RequestMapping(value = "/dongya/getdevices/test22/", method = RequestMethod.GET)
+    @RequestMapping(value = "/fangzhou/getdevices/", method = RequestMethod.GET)
     public JSONObject getDevices(@RequestParam(value = "token", defaultValue = "-1") String token,
             @RequestParam(value = "task_id", defaultValue = "-1") int taskId,
             @RequestHeader(value = "os", defaultValue = "-1") int osType) {
-        String url = "http://192.168.18.25/rest/3.0/device/list/";
+        String url = "http://localhost:8080/device/list/";
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("token", token));
