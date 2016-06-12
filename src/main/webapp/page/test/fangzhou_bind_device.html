@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+</head>
+<body>
+
+<div>测试方舟设备绑定</div>
+<div>
+    <p><span>token</span>
+        <input id="token" type="text" placeholder=""   value="7383669e345d093b0f70a4854a742570" />
+        <br>
+        <span>code</span>
+        <input id="code" type="text" placeholder=""   value="" />
+        <br>
+        <span>device_id</span>
+        <input id="device_id" type="text" placeholder=""   value="1202001" />
+        <br>
+        <span>user_id</span>
+        <input id="user_id" type="text" placeholder=""   value="14657" />
+        <br>
+        <span>relogin</span>
+        <input id="relogin" type="text" placeholder=""   value="" />
+    </p>
+    <p><a id="bindDevicesBtn" href="javascript:void(0)">绑定-方舟本地测试</a></p>
+    <p><a id="deleteUserDeviceBtn" href="javascript:void(0)">解绑-方舟本地测试</a></p>
+</div>
+<div><textarea rows="3" cols="100" id="bindDevicesDiv"></textarea></div>
+<div id="deivcesTable"></div>
+
+</body>
+<script type="application/javascript" src="/haha/static/js/jquery-1.12.4.min.js"></script>
+<script type="application/javascript" src="/haha/static/js/common/common.js"></script>
+<script type="application/javascript" src="fangzhou_bind_device.js"></script>
+</html>

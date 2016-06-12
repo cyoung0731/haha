@@ -51,4 +51,61 @@ public class FangzhouController {
         }
         return null;
     }
+    
+    
+    /**
+     * 测试绑定
+     * 
+     * @param phone
+     * @return
+     */
+    @RequestMapping(value = "/fangzhou/bind/", method = RequestMethod.GET)
+    public JSONObject bind(@RequestParam(value = "device_id", defaultValue = "-1") int deviceId,
+            @RequestParam(value = "code", defaultValue = "-1") String code,
+            @RequestHeader(value = "token", defaultValue = "-1") String token,
+            @RequestParam(value = "relogin", defaultValue = "-1") int relogin) {
+        
+        String url = "http://localhost:8080/device/bind/";
+        String response = "";
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("device_id", String.valueOf(deviceId)));
+        params.add(new BasicNameValuePair("code", String.valueOf(code)));
+        params.add(new BasicNameValuePair("token", String.valueOf(token)));
+        params.add(new BasicNameValuePair("relogin", String.valueOf(relogin)));
+        try {
+            response = CyUtil.httpPost(url, params, null, null);
+            logger.debug("-----response={}", response);
+            JSONObject responseJson = JSONObject.fromObject(response);
+            return responseJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    /**
+     * 测试解绑
+     * 
+     * @param phone
+     * @return
+     */
+    @RequestMapping(value = "/fangzhou/unbind/", method = RequestMethod.POST)
+    public JSONObject bind(@RequestParam(value = "device_id", defaultValue = "-1") int deviceId,
+            @RequestParam(value = "user_id", defaultValue = "-1") long userId) {
+        
+        String url = "http://localhost:8080/device/unbind/";
+        String response = "";
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("device_id", String.valueOf(deviceId)));
+        params.add(new BasicNameValuePair("user_id", String.valueOf(userId)));
+        try {
+            response = CyUtil.httpPost(url, params, null, null);
+            logger.debug("-----response={}", response);
+            JSONObject responseJson = JSONObject.fromObject(response);
+            return responseJson;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

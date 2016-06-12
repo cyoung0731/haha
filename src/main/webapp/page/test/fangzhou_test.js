@@ -16,7 +16,7 @@ $(document).ready(
         });
 
 /**
- * getUserid
+ * 获取设备列表
  * 
  * @param name
  * @param passwd
@@ -64,7 +64,3 @@ function getDevices(getDeviceUrl) {
         }
     });
 }
-
-
-
-

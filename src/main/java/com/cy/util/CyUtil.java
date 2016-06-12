@@ -12,9 +12,11 @@ import java.util.Set;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
@@ -93,6 +95,53 @@ public class CyUtil {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = null;
         response = httpClient.execute(hp);
+        
+        if(response.getStatusLine().getStatusCode() == 302){
+            String locationUrl = response.getLastHeader("Location").getValue();
+            logger.debug("重定向url={}",locationUrl);
+        }
+        
+        HttpEntity responseEntity = response.getEntity();
+        String reponseString = EntityUtils.toString(responseEntity, "utf-8");
+        return reponseString;
+    }
+
+    
+    /**
+     * 公用httpPost方法
+     * 
+     * @param url
+     * @param params
+     * @param headers
+     * @param entity
+     * @return
+     * @throws Exception
+     */
+    public static String httpDelete(String url, List<NameValuePair> params, Map<String, String> headers, String entity)
+            throws Exception {
+        HttpDelete hd = new HttpDelete(url);
+        if (params != null) {
+            ((HttpResponse) hd).setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+        }
+        if (headers != null) {
+            Set<String> keys = headers.keySet();
+            for (Iterator<String> i = keys.iterator(); i.hasNext();) {
+                String key = (String) i.next();
+                hd.addHeader(key, headers.get(key));
+            }
+        }
+        if (entity != null) {
+            ((HttpResponse) hd).setEntity(new StringEntity(entity, Charset.forName("UTF-8")));
+        }
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+        response = httpClient.execute(hd);
+        
+        if(response.getStatusLine().getStatusCode() == 302){
+            String locationUrl = response.getLastHeader("Location").getValue();
+            logger.debug("重定向url={}",locationUrl);
+        }
+        
         HttpEntity responseEntity = response.getEntity();
         String reponseString = EntityUtils.toString(responseEntity, "utf-8");
         return reponseString;
