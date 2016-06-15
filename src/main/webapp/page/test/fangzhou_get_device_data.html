@@ -15,33 +15,36 @@
 </head>
 <body>
 
-<div>
-    <p><a href="http://114.113.154.5:8080/">短信-管理平台</a>AA00270/AA0027036</p>
-    <p><a href="http://111.206.219.17/c-pt/pt/login.php">语音-管理平台</a>yAA0064/006466</p>
-</div>
-<br><br>
-<div>
-    测试华信发送短信和语音验证码
-</div>
 
 <div>
-    <p><span>phone</span>
-        <input id="phone" type="text" placeholder=""   value="18611286597" />
-    </p>
-    <p><span>verification</span>
-        <input id="verification" type="text" placeholder=""  value="1234" />
-    </p>
-</div>
-<div>
-    <a id="smsBtn" href="javascript:void(0)">sms</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a id="voiceBtn" href="javascript:void(0)">voice</a>
+    <p><a href="/haha/index.html">返回首页</a></p>
 </div>
 
-<div><textarea rows="30" cols="100" id="resultDiv"></textarea></div>
+<div>获取设备数据</div>
+<div>
+    <p><span>userId</span>
+        <input id="userId" type="text" placeholder=""   value="14657" />
+        <br>
+        <span>deviceId</span>
+        <input id="deviceId" type="text" placeholder=""   value="1202001" />
+        <br>
+        <span>indicatorId</span>
+        <input id="indicatorId" type="text" placeholder=""   value="1000" />
+        <br>
+        <span>startDate</span>
+        <input id="startDate" type="text" placeholder=""   value="" />
+        <br>
+        <span>endDate</span>
+        <input id="endDate" type="text" placeholder=""   value="" />
+    </p>
+    <p><a id="getDeviceDataBtn" href="javascript:void(0)">获取设备数据</a></p>
+    <p><a id="getDongyaDeviceDataByUserTaskBtn" href="javascript:void(0)">调用动吖所有用户,任务相关设备数据接口</a></p>
+</div>
+<div><textarea rows="10" cols="100" id="getDevicesDataDiv"></textarea></div>
+<div id="deivcesTable"></div>
 
 </body>
 <script type="application/javascript" src="/haha/static/js/jquery-1.12.4.min.js"></script>
 <script type="application/javascript" src="/haha/static/js/common/common.js"></script>
-<script type="application/javascript" src="/haha/static/js/test/huaxin_sms_voice_verification.js"></script>
+<script type="application/javascript" src="fangzhou_get_device_data.js"></script>
 </html>

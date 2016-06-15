@@ -1,5 +1,9 @@
 package com.cy.test.service.rocedar;
 
+import java.util.List;
+
+import com.cy.test.bean.MqBean;
+
 public interface DongyaService {
 
     /**
@@ -10,5 +14,14 @@ public interface DongyaService {
      * @return
      */
    public String getUseridByPhone(String phone);
+
+    /**
+     * 获取mq参数
+     * 
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    List<MqBean> getMqParam(String startDate, String endDate);
 
 }

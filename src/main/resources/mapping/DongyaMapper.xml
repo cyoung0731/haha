@@ -7,4 +7,27 @@
     <select id="selectUseridByPhone" resultType="java.lang.String">
         select user_id from dy_user_user where phone = #{phone}
     </select>
+    
+    <select id="selectMqBean" resultType="com.cy.test.bean.MqBean">
+        SELECT
+            a.user_id userId,
+            a.device_id deviceId,
+            d.target_type_id targetTypeId,
+            b.target_id targetId,
+            a.task_id taskId,
+            #{startDate} startDate,
+            #{endDate} endDate
+        FROM
+            dy_user_task_device a
+        INNER JOIN dy_tasks c ON a.task_id = c.task_id
+        INNER JOIN dy_task_target_rel b ON a.task_id = b.task_id
+        INNER JOIN dy_task_target e ON e.target_id = b.target_id
+        INNER JOIN dy_task_target_type d ON e.target_type_id = d.target_type_id
+        INNER JOIN dy_user_task_target f ON f.user_id = a.user_id
+                                                            AND f.task_id = a.task_id
+                                                            AND f.target_id = b.target_id
+                                                            and f.status = 1
+        inner join gb_user_device g on g.user_id = a.user_id and g.device_id = a.device_id
+        where a.device_id != 1000000 and a.device_id != 1000
+    </select>
 </mapper>

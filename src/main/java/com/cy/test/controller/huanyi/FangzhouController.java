@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.util.CyUtil;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @RestController
@@ -62,7 +63,7 @@ public class FangzhouController {
     @RequestMapping(value = "/fangzhou/bind/", method = RequestMethod.GET)
     public JSONObject bind(@RequestParam(value = "device_id", defaultValue = "-1") int deviceId,
             @RequestParam(value = "code", defaultValue = "-1") String code,
-            @RequestHeader(value = "token", defaultValue = "-1") String token,
+            @RequestParam(value = "token", defaultValue = "-1") String token,
             @RequestParam(value = "relogin", defaultValue = "-1") int relogin) {
         
         String url = "http://localhost:8080/device/bind/";
@@ -108,4 +109,38 @@ public class FangzhouController {
         }
         return null;
     }
+    
+    /**
+     * 获取设备数据
+     * 
+     * @param phone
+     * @return
+     */
+    @RequestMapping(value = "/fangzhou/getdevicedata/", method = RequestMethod.GET)
+    public JSONArray mq(@RequestParam(value = "userId", defaultValue = "114576668386620038") long userId,
+            @RequestParam(value = "deviceId", defaultValue = "1202001") int deviceId,
+            @RequestParam(value = "indicatorId", defaultValue = "1000") int indicatorId,
+            @RequestParam(value = "startDate", defaultValue = "20160425") int startDate,
+            @RequestParam(value = "endDate", defaultValue = "20160425") int endDate) {
+        
+        String url = "http://localhost:8080/device/getdata/";
+        String response = "";
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("userId", String.valueOf(userId)));
+        params.add(new BasicNameValuePair("deviceId", String.valueOf(deviceId)));
+        params.add(new BasicNameValuePair("indicatorId", String.valueOf(indicatorId)));
+        params.add(new BasicNameValuePair("startDate", String.valueOf(startDate)));
+        params.add(new BasicNameValuePair("endDate", String.valueOf(endDate)));
+        
+        try {
+            response = CyUtil.httpGet(url, params, null);
+            logger.debug("-----response={}", response);
+            JSONArray responseJsonArray = JSONArray.fromObject(response);
+            return responseJsonArray;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }
