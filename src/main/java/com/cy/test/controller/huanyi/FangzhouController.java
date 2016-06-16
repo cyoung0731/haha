@@ -142,4 +142,39 @@ public class FangzhouController {
         return null;
     }
     
+    /**
+     * 上传设备数据
+     * 
+     * @param phone
+     * @return
+     */
+    @RequestMapping(value = "/fangzhou/device/upload/", method = RequestMethod.POST)
+    public JSONArray uploadData(@RequestParam(value = "token", defaultValue = "-1") String token,
+            @RequestParam(value = "device_id", defaultValue = "-1") int deviceId,
+            @RequestParam(value = "indicator_id", defaultValue = "-1") int indicatorId,
+            @RequestParam(value = "value", defaultValue = "-1") int value,
+            @RequestParam(value = "derive_data", defaultValue = "-1") String deriveData, 
+            @RequestParam(value = "record_date", defaultValue = "-1") int recordDate, 
+            @RequestParam(value = "os", defaultValue = "-1") int osType) {
+        
+        String url = "http://localhost:8080/device/upload/";
+        String response = "";
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("token", String.valueOf(token)));
+        params.add(new BasicNameValuePair("device_id", String.valueOf(deviceId)));
+        params.add(new BasicNameValuePair("indicator_id", String.valueOf(indicatorId)));
+        params.add(new BasicNameValuePair("value", String.valueOf(value)));
+        params.add(new BasicNameValuePair("derive_data", String.valueOf(deriveData)));
+        params.add(new BasicNameValuePair("record_date", String.valueOf(recordDate)));
+        try {
+            response = CyUtil.httpPost(url, params, null, null);
+            logger.debug("-----response={}", response);
+            JSONArray responseJsonArray = JSONArray.fromObject(response);
+            return responseJsonArray;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }
