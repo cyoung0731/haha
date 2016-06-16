@@ -9,7 +9,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,13 +32,13 @@ public class FangzhouController {
      */
     @RequestMapping(value = "/fangzhou/getdevices/", method = RequestMethod.GET)
     public JSONObject getDevices(@RequestParam(value = "token", defaultValue = "-1") String token,
-            @RequestParam(value = "task_id", defaultValue = "-1") int taskId,
-            @RequestHeader(value = "os", defaultValue = "-1") int osType) {
+            @RequestParam(value = "task_indicator_id", defaultValue = "-1") int task_indicator_id,
+            @RequestParam(value = "os", defaultValue = "-1") int osType) {
         String url = "http://localhost:8080/device/list/";
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("token", token));
-        params.add(new BasicNameValuePair("task_id", String.valueOf(taskId)));
+        params.add(new BasicNameValuePair("indicator_id", String.valueOf(task_indicator_id)));
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("os", String.valueOf(osType));
         try {

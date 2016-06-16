@@ -14,7 +14,7 @@ $(document).ready(
         });
 
 /**
- * 获取设备列表
+ * 绑定设备
  * 
  * @param name
  * @param passwd

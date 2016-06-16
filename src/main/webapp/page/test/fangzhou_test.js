@@ -24,7 +24,7 @@ $(document).ready(
  */
 function getDevices(getDeviceUrl) {
     var token = $("#token").val().trim();
-    var task_id = $("#task_id").val().trim();
+    var task_indicator_id = $("#task_indicator_id").val().trim();
     var os = $("#os").val().trim();
     $.ajax({
         url : rootpath + getDeviceUrl,
@@ -32,7 +32,7 @@ function getDevices(getDeviceUrl) {
         dataType : "json",
         data : {
             token : token,
-            task_id : task_id,
+            task_indicator_id : task_indicator_id,
             os : os
         },
         success : function(data) {

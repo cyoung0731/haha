@@ -53,13 +53,13 @@ public class DongyaController {
      */
     @RequestMapping(value = "/dongya/getdevices/test22/", method = RequestMethod.GET)
     public JSONObject getDevices(@RequestParam(value = "token", defaultValue = "-1") String token,
-            @RequestParam(value = "task_id", defaultValue = "-1") int taskId,
+            @RequestParam(value = "task_indicator_id", defaultValue = "-1") int taskIndicatorId,
             @RequestHeader(value = "os", defaultValue = "-1") int osType) {
         String url = "http://192.168.18.25/rest/3.0/device/list/";
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("token", token));
-        params.add(new BasicNameValuePair("task_id", String.valueOf(taskId)));
+        params.add(new BasicNameValuePair("task_id", String.valueOf(taskIndicatorId)));
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("os", String.valueOf(osType));
         try {
