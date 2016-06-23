@@ -3,10 +3,17 @@
  */
 $(document).ready(
         function() {
+            var yesterdar = CurentTime() - 1
+            $("#value").val("[{dt:"+CurentTime()+", steps:1234},{dt:"+yesterdar+", steps:5678}]");
             $("#record_date").val(CurentTime());
+            
             $("#uploadDeviceDataBtn").click(
                     function() {
                         uploadDeviceData();
+                    });
+            $("#uploadStepDataBtn").click(
+                    function() {
+                        uploadStepData();
                     });
         });
 
@@ -28,6 +35,25 @@ function uploadDeviceData(){
             value : value,
             derive_data : derive_data,
             record_date : record_date
+        },
+        success : function(data) {
+            alert("haha")
+        }
+    });
+}
+
+function uploadStepData(){
+    var token = $("#token").val().trim();
+    var device_id = $("#device_id").val().trim();
+    var value = $("#value").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/device/upload/step/",
+        type : "POST",
+        dataType : "json",
+        data : {
+            token : token,
+            device_id : device_id,
+            steps : value
         },
         success : function(data) {
             alert("haha")

@@ -11,8 +11,10 @@ $(document).ready(
                     function() {
                         getDevices("/dongya/getdevices/test22/");
                     });
-            getDongyatTestBtn
-            
+            $("#getDevicesByIndicatorBtn").click(
+                    function() {
+                        getDevices("/fangzhou/getdevices/byindicator");
+                    });
         });
 
 /**
@@ -24,7 +26,8 @@ $(document).ready(
  */
 function getDevices(getDeviceUrl) {
     var token = $("#token").val().trim();
-    var task_indicator_id = $("#task_indicator_id").val().trim();
+    var indicator_id = $("#indicator_id").val().trim();
+    var status = $("#status").val().trim();
     var os = $("#os").val().trim();
     $.ajax({
         url : rootpath + getDeviceUrl,
@@ -32,7 +35,8 @@ function getDevices(getDeviceUrl) {
         dataType : "json",
         data : {
             token : token,
-            task_indicator_id : task_indicator_id,
+            indicator_id : indicator_id,
+            status : status,
             os : os
         },
         success : function(data) {

@@ -5,7 +5,11 @@ $(document).ready(
         function() {
             $("#bindDevicesBtn").click(
                     function() {
-                        bindDevice("/fangzhou/getdevices/");
+                        bindDevice();
+                    });
+            $("#bindDeviceSnBtn").click(
+                    function() {
+                        bindDeviceSn();
                     });
             $("#deleteUserDeviceBtn").click(
                     function() {
@@ -41,16 +45,39 @@ function bindDevice() {
     });
 }
 
-function deleteUserDevice(){
-    var user_id = $("#user_id").val().trim();
+
+/**
+ * 绑定设备-SN设备
+ */
+function bindDeviceSn() {
+    var token = $("#token").val().trim();
+    var sn = $("#sn").val().trim();
     var device_id = $("#device_id").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/bind/sn/",
+        type : "GET",
+        dataType : "json",
+        data : {
+            token : token,
+            sn : sn,
+            device_id : device_id
+        },
+        success : function(data) {
+            $("#bindDevicesDiv").html(JSON.stringify(data));
+        }
+    });
+}
+
+function deleteUserDevice(){
+    var device_id = $("#device_id").val().trim();
+    var token = $("#token").val().trim();
     $.ajax({
         url : rootpath + "/fangzhou/unbind/",
         type : "POST",
         dataType : "json",
         data : {
             device_id : device_id,
-            user_id : user_id
+            token : token
         },
         success : function(data) {
             alert(JSON.stringify(data))

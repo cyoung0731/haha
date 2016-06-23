@@ -13,6 +13,14 @@ $(document).ready(
                     function() {
                         getDongyaDeviceDataByUserTask();
                     });
+            $("#getUsingDeviceDataBtn").click(
+                    function() {
+                        getUsingDeviceData();
+                    });
+            $("#setIndicatorDeviceBtn").click(
+                    function() {
+                        setIndicatorDevice();
+                    });
         });
 
 function getDeviceData(){
@@ -38,6 +46,21 @@ function getDeviceData(){
     });
 }
 
+function getUsingDeviceData(){
+    var token = $("#token").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/device/get/using/devicedata/",
+        type : "GET",
+        dataType : "json",
+        data : {
+            token : token
+        },
+        success : function(data) {
+            alert(1)
+            $("#getDevicesDataDiv").html(JSON.stringify(data));
+        }
+    });
+}
 
 function getDongyaDeviceDataByUserTask(){
     var startDate = $("#startDate").val().trim();
@@ -53,6 +76,25 @@ function getDongyaDeviceDataByUserTask(){
         success : function(data) {
             alert("haha")
 //            $("#getDevicesDataDiv").html(JSON.stringify(data));
+        }
+    });
+}
+
+function setIndicatorDevice(){
+    var token = $("#token").val().trim();
+    var indicatorId = $("#indicatorId").val().trim();
+    var deviceId = $("#deviceId").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/device/indicator/update/",
+        type : "POST",
+        dataType : "json",
+        data : {
+            token : token,
+            indicatorId : indicatorId,
+            deviceId : deviceId
+        },
+        success : function(data) {
+            $("#getDevicesDataDiv").html(JSON.stringify(data));
         }
     });
 }
