@@ -15,6 +15,10 @@ $(document).ready(
                     function() {
                         deleteUserDevice();
                     });
+            $("#bindDeviceBluetoothBtn").click(
+                    function() {
+                        bindDeviceBluetooth();
+                    });
         });
 
 /**
@@ -49,6 +53,28 @@ function bindDevice() {
 /**
  * 绑定设备-SN设备
  */
+function bindDeviceBluetooth() {
+    var token = $("#token").val().trim();
+    var mac_addr = $("#mac_addr").val().trim();
+    var device_id = $("#device_id").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/bind/bluetooth/",
+        type : "GET",
+        dataType : "json",
+        data : {
+            token : token,
+            mac_addr : mac_addr,
+            device_id : device_id
+        },
+        success : function(data) {
+            $("#bindDevicesDiv").html(JSON.stringify(data));
+        }
+    });
+}
+
+/**
+ * 绑定设备-蓝牙设备
+ */
 function bindDeviceSn() {
     var token = $("#token").val().trim();
     var sn = $("#sn").val().trim();
@@ -80,7 +106,7 @@ function deleteUserDevice(){
             token : token
         },
         success : function(data) {
-            alert(JSON.stringify(data))
+            $("#bindDevicesDiv").html(JSON.stringify(data));
         }
     });
 }

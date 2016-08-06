@@ -21,6 +21,10 @@ $(document).ready(
                     function() {
                         setIndicatorDevice();
                     });
+            $("#setIndicatorDeviceDeleteBtn").click(
+                    function() {
+                        setIndicatorDeviceDelete();
+                    });
         });
 
 function getDeviceData(){
@@ -86,6 +90,25 @@ function setIndicatorDevice(){
     var deviceId = $("#deviceId").val().trim();
     $.ajax({
         url : rootpath + "/fangzhou/device/indicator/update/",
+        type : "POST",
+        dataType : "json",
+        data : {
+            token : token,
+            indicatorId : indicatorId,
+            deviceId : deviceId
+        },
+        success : function(data) {
+            $("#getDevicesDataDiv").html(JSON.stringify(data));
+        }
+    });
+}
+
+function setIndicatorDeviceDelete(){
+    var token = $("#token").val().trim();
+    var indicatorId = $("#indicatorId").val().trim();
+    var deviceId = $("#deviceId").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/device/indicator/delete/",
         type : "POST",
         dataType : "json",
         data : {

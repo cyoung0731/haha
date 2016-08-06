@@ -104,4 +104,29 @@ public class DongyaController {
             }
            }
     }
+    
+        /**
+         * 颈椎操打卡
+         * 
+         * @param phone
+         * @return
+         */
+        @RequestMapping(value = "/dongya/daka/jzc/", method = RequestMethod.POST)
+        public JSONObject getDevices(@RequestParam(value = "token", defaultValue = "24194bbb9287102b839c27b6d6c0dde0") String token) {
+            String url = "http://dongya.rocedar.com/rest/3.0/task/bool/data/";
+            String response = "";
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("token", token));
+            params.add(new BasicNameValuePair("target_id", "40023"));
+            params.add(new BasicNameValuePair("task_id", "3007"));
+            try {
+                response = CyUtil.httpPost(url, params, null, null);
+                logger.debug("-----response={}", response);
+                JSONObject responseJson = JSONObject.fromObject(response);
+                return responseJson;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 }

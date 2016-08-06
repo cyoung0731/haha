@@ -15,6 +15,14 @@ $(document).ready(
                     function() {
                         uploadStepData();
                     });
+            $("#uploadBloodSugarDataBtn").click(
+                    function() {
+                        uploadBloodSugarData();
+                    });
+            $("#uploadBloodPressureDataBtn").click(
+                    function() {
+                        uploadBloodPressureData();
+                    });
         });
 
 function uploadDeviceData(){
@@ -60,6 +68,54 @@ function uploadStepData(){
         }
     });
 }
+
+function uploadBloodSugarData(){
+    var value = $("#value").val().trim();
+    var time_type = $("#derive_data").val().trim();
+    var date = $("#record_date").val().trim();
+    var device_id = $("#device_id").val().trim();
+    var token = $("#token").val().trim();
+    
+    $.ajax({
+        url : rootpath + "/fangzhou/device/upload/bloodsugar/",
+        type : "POST",
+        dataType : "json",
+        data : {
+            token : token,
+            device_id : device_id,
+            blood_glucose : value,
+            time_type : time_type,
+            date : date
+        },
+        success : function(data) {
+            alert("haha")
+        }
+    });
+}
+
+function uploadBloodPressureData(){
+    var token = $("#token").val().trim();
+    var device_id = $("#device_id").val().trim();
+    var high_pressure = $("#high_pressure").val().trim();
+    var low_pressure = $("#low_pressure").val().trim();
+    var heart_rate = $("#heart_rate").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/device/upload/bloodpressure/",
+        type : "POST",
+        dataType : "json",
+        data : {
+            token : token,
+            device_id : device_id,
+            high_pressure : high_pressure,
+            low_pressure : low_pressure,
+            heart_rate : heart_rate
+        },
+        success : function(data) {
+            alert("haha")
+        }
+    });
+}
+
 
 
 function getDongyaDeviceDataByUserTask(){

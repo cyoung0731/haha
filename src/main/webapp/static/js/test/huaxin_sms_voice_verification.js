@@ -75,6 +75,5 @@ function voiceSend(phone, verification) {
         success : function(data) {
                 $("#resultDiv").html(data.msg);
             }
-        }
     });
 }
