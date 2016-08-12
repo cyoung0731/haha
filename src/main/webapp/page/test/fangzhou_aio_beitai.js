@@ -4,6 +4,7 @@
 $(document).ready(
         function() {
             $("#report_time").val(CurentTime());
+            $("#report_id").val('BT'+CurentTime()+'00000000000001461656839000');
             $("#scanBtnDy").click(
                     function() {
                         scan(1);

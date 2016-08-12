@@ -21,9 +21,12 @@ import net.sf.json.JSONObject;
 public class ShuangjiaController {
 
     // private static final String IP_TEST = "http://192.168.18.25";
-    private static final String IP_TEST_DY = "http://localhost:8080";
-    private static final String IP_TEST_FZ = "http://localhost:8081";
-    private static final String IP_TEST_DIS = "http://localhost:8080";
+    private static final String IP_TEST_DY = "http://192.168.18.25/rest/3.0";
+    private static final String IP_TEST_FZ= "http://192.168.18.25";
+    private static final String IP_TEST_DIS = "http://192.168.18.25/rest/3.0";
+//    private static final String IP_TEST_DY = "http://localhost:8080";
+//    private static final String IP_TEST_FZ= "http://localhost:8081";
+//    private static final String IP_TEST_DIS = "http://localhost:8080";
     private static Logger logger = LogManager.getLogger(ShuangjiaController.class);
 
     /**
