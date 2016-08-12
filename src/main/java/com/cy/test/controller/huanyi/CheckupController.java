@@ -13,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.util.CyUtil;
+import com.cy.util.DeviceConstants;
 
 @RestController
 public class CheckupController {
 
-    // private static final String IP_TEST = "http://192.168.18.25";
-    private static final String IP_TEST = "http://localhost:8080";
     private static Logger logger = LogManager.getLogger(CheckupController.class);
 
     /**
@@ -29,7 +28,7 @@ public class CheckupController {
      */
     @RequestMapping(value = "/fangzhou/checkup/send/report/list/", method = RequestMethod.GET)
     public String getMinzhongTest(@RequestParam(value = "token", defaultValue = "-1") String token) {
-         String url = IP_TEST + "/hy/device/send/report/list/";
+         String url = DeviceConstants.IP_TEST_FZ + "/hy/device/send/report/list/";
         String response = "";
         try {
             response = CyUtil.httpGet(url, null, null);
@@ -50,7 +49,7 @@ public class CheckupController {
      */
     @RequestMapping(value = "/fangzhou/checkup/report/list/", method = RequestMethod.GET)
     public String getReportList(@RequestParam(value = "token", defaultValue = "-1") String token) {
-        String url = IP_TEST + "/hy/device/report/list/";
+        String url = DeviceConstants.IP_TEST_FZ + "/hy/device/report/list/";
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("token", token));

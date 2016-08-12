@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.util.CyUtil;
+import com.cy.util.DeviceConstants;
 import com.cy.util.DeviceUtil;
 
 import net.sf.json.JSONObject;
@@ -20,13 +21,6 @@ import net.sf.json.JSONObject;
 @RestController
 public class BeitaiController {
 
-    // private static final String IP_TEST = "http://192.168.18.25";
-    private static final String IP_TEST_DY = "http://192.168.18.25/rest/3.0";
-    private static final String IP_TEST_FZ= "http://192.168.18.25";
-    private static final String IP_TEST_DIS = "http://192.168.18.25/rest/3.0";
-//    private static final String IP_TEST_DY = "http://localhost:8080";
-//    private static final String IP_TEST_FZ= "http://localhost:8081";
-//    private static final String IP_TEST_DIS = "http://localhost:8080";
     private static Logger logger = LogManager.getLogger(BeitaiController.class);
 
     /**
@@ -44,9 +38,9 @@ public class BeitaiController {
             @RequestParam(value = "report_time", defaultValue = "-1") String report_time) {
         String url = "";
         if (appid == 1) {
-            url = IP_TEST_DY + "/dy/device/aio/beitai/scan/";
+            url = DeviceConstants.IP_TEST_DY + "/dy/device/aio/beitai/scan/";
         } else if (appid == 2) {
-            url = IP_TEST_FZ + "/hy/device/aio/beitai/scan/";
+            url = DeviceConstants.IP_TEST_FZ + "/hy/device/aio/beitai/scan/";
         }
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -79,7 +73,7 @@ public class BeitaiController {
             @RequestParam(value = "report_id", defaultValue = "-1") String reportid,
             @RequestParam(value = "report_time", defaultValue = "-1") String report_time) {
 
-        String url = IP_TEST_DIS + "/device/aio/report/beitai/";
+        String url = DeviceConstants.IP_TEST_DIS + "/device/aio/report/beitai/";
 
         reportid = "\"" + reportid + "\"";
 

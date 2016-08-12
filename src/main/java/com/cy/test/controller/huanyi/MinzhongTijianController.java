@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.util.CyUtil;
+import com.cy.util.DeviceConstants;
 
 import net.sf.json.JSONObject;
 
 @RestController
 public class MinzhongTijianController {
 
-     private static final String IP_TEST = "http://192.168.18.25";
-//    private static final String IP_TEST = "http://localhost:8080";
     private static Logger logger = LogManager.getLogger(MinzhongTijianController.class);
 
     /**
@@ -84,7 +83,7 @@ public class MinzhongTijianController {
     @RequestMapping(value = "/fangzhou/minzhong/get/data/", method = RequestMethod.GET)
     public JSONObject getData(@RequestParam(value = "barcode", defaultValue = "-1") String barcode) {
 //        String url = "http://th.mztj.cn/bgjson.php";
-        String url = IP_TEST + "/hy/device/checkup/minzhong/report/data/";
+        String url = DeviceConstants.IP_TEST_FZ + "/hy/device/checkup/minzhong/report/data/";
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("barcode", barcode));
@@ -129,7 +128,7 @@ public class MinzhongTijianController {
     @RequestMapping(value = "/fangzhou/minzhong/get/report/list/", method = RequestMethod.GET)
     public void getReportList(@RequestParam(value = "code", defaultValue = "-1") String code) {
 //        String url = "http://th.mztj.cn/query.php";
-        String url = IP_TEST + "/hy/device/tijian/minzhong/report/list/";
+        String url = DeviceConstants.IP_TEST_FZ + "/hy/device/tijian/minzhong/report/list/";
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("code", code));

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.util.CyUtil;
+import com.cy.util.DeviceConstants;
 import com.cy.util.DeviceUtil;
 
 import net.sf.json.JSONObject;
@@ -20,13 +21,6 @@ import net.sf.json.JSONObject;
 @RestController
 public class HufengController {
 
-//    private static final String IP_TEST = "http://192.168.18.25";
-    private static final String IP_TEST_DY = "http://192.168.18.25/rest/3.0";
-    private static final String IP_TEST_FZ= "http://192.168.18.25";
-    private static final String IP_TEST_DIS = "http://192.168.18.25/rest/3.0";
-//    private static final String IP_TEST_DY = "http://localhost:8080";
-//    private static final String IP_TEST_FZ= "http://localhost:8081";
-//    private static final String IP_TEST_DIS = "http://localhost:8080";
     private static Logger logger = LogManager.getLogger(HufengController.class);
 
     /**
@@ -42,9 +36,9 @@ public class HufengController {
             @RequestParam(value = "tag2", defaultValue = "-1") String tag2) {
         String url = "";
         if(appid == 1){
-            url =  IP_TEST_DY + "/device/aio/hufeng/scan/";
+            url =  DeviceConstants.IP_TEST_DY + "/device/aio/hufeng/scan/";
         } else if(appid == 2){
-            url =  IP_TEST_FZ + "/hy/device/aio/hufeng/scan/";
+            url =  DeviceConstants.IP_TEST_FZ + "/hy/device/aio/hufeng/scan/";
         }
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -72,7 +66,7 @@ public class HufengController {
     public JSONObject uploadReport(@RequestParam(value = "token", defaultValue = "-1") String token,
             @RequestParam(value = "dn", defaultValue = "-1") String dn,
             @RequestParam(value = "tag2", defaultValue = "-1") String tag2) {
-        String url = IP_TEST_DIS + "/device/aio/report/hufeng/";
+        String url = DeviceConstants.IP_TEST_DIS + "/device/aio/report/hufeng/";
         
         String bp = "data={\"dn\":\"" + dn + "\",\"tag\":null,\"tag2\":\"" + tag2
                 + "\",\"map\":82,\"oximetryPI\":0.0,\"glucoseCode\":null,\"timestamp\":1458894477000,\"diastolic\":100,\"glucose\":0.0,\"heartrate\":103,\"oximetry\":0.0,\"systolic\":135,\"temperature\":0.0,\"weight\":0.0,\"bioR\":0.0,\"signType\":\"bp\",\"usercode\":\"d4t4N0hizGtJhVLx89D7\",\"glucosePeriod\":null,\"continutity\":0}&usercode=d4t4N0hizGtJhVLx89D7";

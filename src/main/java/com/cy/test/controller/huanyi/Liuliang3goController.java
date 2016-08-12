@@ -19,8 +19,6 @@ import net.sf.json.JSONObject;
 @RestController
 public class Liuliang3goController {
 
-    // private static final String IP_TEST = "http://192.168.18.25";
-    private static final String IP_TEST = "http://localhost:8080";
     private static Logger logger = LogManager.getLogger(Liuliang3goController.class);
     
     private static final String PLATFORM_ADDR = "http://new.3gjiayou.com";

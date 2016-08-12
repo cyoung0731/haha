@@ -13,20 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.util.CyUtil;
+import com.cy.util.DeviceConstants;
 import com.cy.util.DeviceUtil;
 
 import net.sf.json.JSONObject;
 
 @RestController
 public class ShuangjiaController {
-
-    // private static final String IP_TEST = "http://192.168.18.25";
-    private static final String IP_TEST_DY = "http://192.168.18.25/rest/3.0";
-    private static final String IP_TEST_FZ= "http://192.168.18.25";
-    private static final String IP_TEST_DIS = "http://192.168.18.25/rest/3.0";
-//    private static final String IP_TEST_DY = "http://localhost:8080";
-//    private static final String IP_TEST_FZ= "http://localhost:8081";
-//    private static final String IP_TEST_DIS = "http://localhost:8080";
     private static Logger logger = LogManager.getLogger(ShuangjiaController.class);
 
     /**
@@ -43,9 +36,9 @@ public class ShuangjiaController {
             @RequestParam(value = "time", defaultValue = "-1") String time) {
         String url = "";
         if (appid == 1) {
-            url = IP_TEST_DY + "/device/aio/nianjia/scan/";
+            url = DeviceConstants.IP_TEST_DY + "/device/aio/nianjia/scan/";
         } else if (appid == 2) {
-            url = IP_TEST_FZ + "/hy/device/aio/nianjia/scan/";
+            url = DeviceConstants.IP_TEST_FZ + "/hy/device/aio/nianjia/scan/";
         }
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -76,7 +69,7 @@ public class ShuangjiaController {
             @RequestParam(value = "phone", defaultValue = "-1") String phone,
             @RequestParam(value = "time", defaultValue = "-1") String time) {
         // String url = IP_TEST + "/hy/device/aio/report/nianjia/";
-        String url = IP_TEST_DIS + "/device/aio/report/nianjia/";
+        String url = DeviceConstants.IP_TEST_DIS + "/device/aio/report/nianjia/";
 
         String report = "{\"machineId\":\"SK-HSX60HD15051201\",\"macAddr\":\"00:0E:C4:CA:0C:EE\",\"recordNo\":\"" + time
                 + "\",\"member\":{\"name\":\"\",\"phone\":\"" + phone + "\",\"idcard\":\"" + id
