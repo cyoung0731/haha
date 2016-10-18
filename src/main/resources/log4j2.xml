@@ -4,8 +4,8 @@
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
 		</Console>
-        <RollingFile name="RollingFile" fileName="/home/dongya/logs/device_data/deviceData.log"
-                           filePattern="/home/dongya/logs/device_data/$${date:yyyy-MM}/deviceData_%d{MM-dd-yyyy}_%i.log.gz">
+        <RollingFile name="RollingFile" fileName="/home/zcy/dev/templog/dongya/deviceData.log"
+                           filePattern="/home/zcy/dev/templog/dongya/$${date:yyyy-MM}/deviceData_%d{MM-dd-yyyy}_%i.log.gz">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss z}|%msg%xEx%n"/>
             <SizeBasedTriggeringPolicy size="50MB"/>
         </RollingFile>

@@ -24,7 +24,7 @@ public class BeitaiController {
     private static Logger logger = LogManager.getLogger(BeitaiController.class);
 
     /**
-     * 测试琥蜂扫描二维码绑定体检报告接口
+     * 测试倍泰扫描二维码绑定体检报告接口
      * 
      * @param phone
      * @return
@@ -38,9 +38,9 @@ public class BeitaiController {
             @RequestParam(value = "report_time", defaultValue = "-1") String report_time) {
         String url = "";
         if (appid == 1) {
-            url = DeviceConstants.IP_TEST_DY + "/dy/device/aio/beitai/scan/";
+            url = DeviceConstants.IP_TEST_DY + "/device/aio/beitai/scan/";
         } else if (appid == 2) {
-            url = DeviceConstants.IP_TEST_FZ + "/hy/device/aio/beitai/scan/";
+            url = DeviceConstants.IP_TEST_FZ + "/aio/beitai/";
         }
         String response = "";
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -61,7 +61,7 @@ public class BeitaiController {
     }
 
     /**
-     * 测试琥蜂扫描二维码绑定体检报告接口
+     * 测试倍泰扫描二维码绑定体检报告接口
      * 
      * @param phone
      * @return
@@ -83,9 +83,9 @@ public class BeitaiController {
         // 血压
         String bp = "{\"data\":{\"diastolic\":78,\"medicId\":\"528A7B3AEE1F4A8BA269139E2999EE11\",\"physicalID\":"
                 + reportid
-                + ",\"pulse\":65436,\"systolic\":123,\"time\":\"2016-05-06 13:54:29\"},\"did\":\"JKJ1512053117001573\",\"dtype\":\"9\",\"idcard\":\"421124198711208970\",\"phone\":\"13492730728\",\"type\":7}";
+                + ",\"pulse\":65,\"systolic\":123,\"time\":\"2016-05-06 13:54:29\"},\"did\":\"JKJ1512053117001573\",\"dtype\":\"9\",\"idcard\":\"421124198711208970\",\"phone\":\"13492730728\",\"type\":7}";
         // 身高体重
-        String weight = "{\"data\":{\"height\":\"888\",\"medicId\":\"102546\",\"physicalID\":" + reportid
+        String weight = "{\"data\":{\"height\":\"186\",\"medicId\":\"102546\",\"physicalID\":" + reportid
                 + ",\"time\":1460054618019,\"weight\":\"88\"},\"did\":\"eeeee\",\"dtype\":\"09\",\"idcard\":null,\"phone\":\"13245679854\",\"type\":9}";
         // 人体成分
         String fat = "{\"data\":{\"adiposerate\":\"34.0\",\"basalMetabolism\":1446,\"bmi\":\"23.3\",\"bone\":\"2.6\",\"medicId\":\"528A7B3AEE1F4A8BA269139E2999EE11\",\"metabolism\":1909,\"moisture\":\"48.2\",\"muscle\":\"37.8\",\"physicalID\":"

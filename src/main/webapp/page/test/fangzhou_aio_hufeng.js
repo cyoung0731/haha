@@ -39,7 +39,8 @@ function scan(appid) {
             appid : appid
         },
         success : function(data) {
-            $("#bindDevicesDiv").html(JSON.stringify(data));
+            alert(data);
+            $("#bindDevicesDiv").html(data);
         }
     });
 }

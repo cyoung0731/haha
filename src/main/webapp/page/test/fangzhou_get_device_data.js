@@ -5,6 +5,10 @@ $(document).ready(
         function() {
             $("#startDate").val(CurentTime());
             $("#endDate").val(CurentTime());
+            $("#getUserIdBtn").click(
+                    function() {
+                        getUserId();
+                    });
             $("#getDeviceDataBtn").click(
                     function() {
                         getDeviceData();
@@ -26,6 +30,21 @@ $(document).ready(
                         setIndicatorDeviceDelete();
                     });
         });
+
+function getUserId(){
+    var phone = $("#phone").val().trim();
+    $.ajax({
+        url : rootpath + "/fangzhou/getUseridByPhone/",
+        type : "GET",
+        dataType : "json",
+        data : {
+            phone : phone
+        },
+        success : function(data) {
+            $("#userId").val(data.result.userid)
+        }
+    });
+}
 
 function getDeviceData(){
     var userId = $("#userId").val().trim();

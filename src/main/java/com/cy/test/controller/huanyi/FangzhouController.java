@@ -9,11 +9,14 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cy.test.result.JsonObjectResult;
+import com.cy.test.service.huanyi.FangzhouService;
 import com.cy.util.CyUtil;
 import com.cy.util.DeviceConstants;
 
@@ -24,6 +27,22 @@ import net.sf.json.JSONObject;
 public class FangzhouController {
 
     private static Logger logger = LogManager.getLogger(FangzhouController.class);
+    @Autowired
+    private FangzhouService fangzhouService;
+
+    /**
+     * 根据手机号查询userid
+     * 
+     * @param phone
+     * @return
+     */
+    @RequestMapping(value = "/fangzhou/getUseridByPhone/", method = RequestMethod.GET)
+    public JsonObjectResult getUseridByPhone(@RequestParam(value = "phone", defaultValue = "-1") String phone) {
+        fangzhouService.getUseridByPhone(phone);
+        JSONObject result = new JSONObject();
+        result.put("userid", fangzhouService.getUseridByPhone(phone));
+        return new JsonObjectResult(0, result);
+    }
 
     /**
      * 测试设备列表接口
@@ -244,7 +263,7 @@ public class FangzhouController {
             @RequestParam(value = "indicator_id", defaultValue = "-1") int indicatorId,
             @RequestParam(value = "value", defaultValue = "-1") String value,
             @RequestParam(value = "derive_data", defaultValue = "") String deriveData,
-            @RequestParam(value = "record_date", defaultValue = "-1") int recordDate,
+            @RequestParam(value = "record_date", defaultValue = "-1") long recordDate,
             @RequestParam(value = "os", defaultValue = "-1") int osType) {
 
         String url = DeviceConstants.IP_TEST_FZ + "/hy/device/upload/";

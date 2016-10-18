@@ -29,7 +29,6 @@ function getDevices(getDeviceUrl) {
     var indicator_id = $("#indicator_id").val().trim();
     var status = $("#status").val().trim();
     var os = $("#os").val().trim();
-    alert(os)
     $.ajax({
         url : rootpath + getDeviceUrl,
         type : "GET",

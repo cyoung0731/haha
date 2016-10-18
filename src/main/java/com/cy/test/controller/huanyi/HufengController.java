@@ -30,7 +30,7 @@ public class HufengController {
      * @return
      */
     @RequestMapping(value = "/fangzhou/aio/hufeng/scan/", method = RequestMethod.GET)
-    public JSONObject getDevices(@RequestParam(value = "token", defaultValue = "-1") String token,
+    public String getDevices(@RequestParam(value = "token", defaultValue = "-1") String token,
             @RequestParam(value = "dn", defaultValue = "-1") String dn,
             @RequestParam(value = "appid", defaultValue = "-1") int appid,
             @RequestParam(value = "tag2", defaultValue = "-1") String tag2) {
@@ -48,12 +48,15 @@ public class HufengController {
         try {
             response = CyUtil.httpGet(url, params, null);
             logger.debug("-----response={}", response);
-            JSONObject responseJson = JSONObject.fromObject(response);
-            return responseJson;
+            if (response.contains("绑定成功，请开始体检")){
+                return "绑定成功，请开始体检";
+            } else {
+                return "绑定失败";
+            }
         } catch (Exception e) {
             e.printStackTrace();
+            return "绑定失败";
         }
-        return null;
     }
     
     /**

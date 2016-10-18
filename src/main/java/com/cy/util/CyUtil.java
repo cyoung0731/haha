@@ -231,9 +231,9 @@ public class CyUtil {
      * 
      * @return
      */
-    public static long formatNowtime(String style) {
+    public static String formatNowtime(String style) {
         Calendar now = Calendar.getInstance();
-        return Long.parseLong(DateFormatUtils.format(now, style));
+        return DateFormatUtils.format(now, style);
     }
 
     // /**

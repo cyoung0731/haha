@@ -17,24 +17,33 @@
 
 
 <div>
-    <p><a href="/haha/index.html">返回首页</a></p>
+    <p><a href="/haha/page/test/dongya/dongya_index.html">返回动吖首页</a></p>
 </div>
 
-<div>获取设备数据</div>
+<div>获取动吖设备数据</div>
 <div>
     <p>
         <span>phone</span>
-        <input id="phone" type="text" placeholder=""   value="18201477263" />
+        <input id="phone" type="text" placeholder=""   value="18611286597" />
         <a id="getUserIdBtn" href="javascript:void(0)">获取userId</a>
         <br>
         <span>userId</span>
-        <input id="userId" type="text" size="40" placeholder=""   value="114575065034750014" />
+        <input id="userId" type="text" placeholder=""   value="114611487582158778" />
         <br>
         <span>deviceId</span>
         <input id="deviceId" type="text" placeholder=""   value="1202001" />
         <br>
-        <span>indicatorId</span>
-        <input id="indicatorId" type="text" placeholder=""   value="4000" />
+        <span>targetTypeId</span>
+        <input id="targetTypeId" type="text" placeholder=""   value="1000" />
+        <span>1000-步数 | 1001-跑步 | 1002-骑行 | 1005-按时睡觉</span>
+        <br>
+        <span>targetId</span>
+        <input id="targetId" type="text" placeholder=""   value="4000" />
+        <span>40000-步数 | 40004-跑步 | 40008-骑行 | 40038-按时睡觉</span>
+        <br>
+        <span>tasktId</span>
+        <input id="tasktId" type="text" placeholder=""   value="3000" />
+        <span>3000-步数 | 3001-跑步 | 3004-骑行 | 3006-按时睡觉</span>
         <br>
         <span>startDate</span>
         <input id="startDate" type="text" placeholder=""   value="" />
@@ -42,14 +51,8 @@
         <span>endDate</span>
         <input id="endDate" type="text" placeholder=""   value="" />
         <br>
-        <span>token</span>
-        <input id="token" type="text" placeholder=""   value="5c7cfb3455fbf6857a94c1530833a41f" />
     </p>
     <p><a id="getDeviceDataBtn" href="javascript:void(0)">获取设备数据</a></p>
-    <p><a id="getDongyaDeviceDataByUserTaskBtn" href="javascript:void(0)">调用动吖所有用户,任务相关设备数据接口</a></p>
-    <p><a id="getUsingDeviceDataBtn" href="javascript:void(0)">查询用户所有使用中的设备数据-参数token</a></p>
-    <p><a id="setIndicatorDeviceBtn" href="javascript:void(0)">设置用户设备开启使用</a></p>
-    <p><a id="setIndicatorDeviceDeleteBtn" href="javascript:void(0)">设置用户设备停止使用</a></p>
 </div>
 <div><textarea rows="10" cols="100" id="getDevicesDataDiv"></textarea></div>
 <div id="deivcesTable"></div>
@@ -57,5 +60,5 @@
 </body>
 <script type="application/javascript" src="/haha/static/js/jquery-1.12.4.min.js"></script>
 <script type="application/javascript" src="/haha/static/js/common/common.js"></script>
-<script type="application/javascript" src="fangzhou_get_device_data.js"></script>
+<script type="application/javascript" src="dongya_get_device_data.js"></script>
 </html>
