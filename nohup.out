@@ -1,0 +1,50 @@
+[15587:15670:1124/135725:ERROR:native_process_launcher.cc(137)] Can't find manifest for native messaging host com.xunlei.thunder
+[15587:15618:1124/135726:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+[15587:15618:1124/135844:ERROR:ssl_client_socket_impl.cc(1168)] handshake failed; returned -1, SSL error code 1, net_error -100
+[15587:15670:1124/135903:ERROR:gcm_store_impl.cc(627)] LevelDB remove failed: NotFound: 
+[15587:15618:1124/135903:ERROR:mcs_client.cc(524)] GCM Update failed!
+[15587:15817:1124/140144:ERROR:get_updates_processor.cc(244)] PostClientToServerMessage() failed during GetUpdates
+A Parser-blocking, cross-origin script, http://s11.cnzz.com/z_stat.php?id=1257016300&show=pic, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://s11.cnzz.com/z_stat.php?id=1257016300&show=pic, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1257016300&show=pic&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1257016300&show=pic&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+[15587:15618:1124/140227:ERROR:connection_factory_impl.cc(367)] Failed to connect to MCS endpoint with error -7
+A Parser-blocking, cross-origin script, https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/global/js/all_async_search_6ef95eb.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/global/js/all_async_search_6ef95eb.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+[WARNING:flash/platform/pepper/pep_module.cpp(63)] SANDBOXED
+[15587:15618:1124/140404:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+[15587:15618:1124/140411:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+A Parser-blocking, cross-origin script, http://hm.baidu.com/h.js?c0f0742eeb83d6ab6614a81723b00197, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://hm.baidu.com/h.js?c0f0742eeb83d6ab6614a81723b00197, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+[15587:15618:1124/141659:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+A Parser-blocking, cross-origin script, http://rwq.youle55.com/r/mr_1559_7699.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://rwq.youle55.com/r/mr_1559_7699.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://6vhao.kkcaicai.com:8080/960X90.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://s11.cnzz.com/z_stat.php?id=1260800068&web_id=1260800068, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://s11.cnzz.com/z_stat.php?id=1260800068&web_id=1260800068, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1260800068&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1260800068&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+[WARNING:flash/platform/pepper/pep_module.cpp(63)] SANDBOXED
+A Parser-blocking, cross-origin script, http://6vhao.kkcaicai.com:8080/960X90.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://6vhao.kkcaicai.com:8080/960X90.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://6vhao.kkcaicai.com:8080/tan.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://rwq.youle55.com/r/mr_1559_7699.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://rwq.youle55.com/r/mr_1559_7699.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://6vhao.kkcaicai.com:8080/960X90.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://6vhao.kkcaicai.com:8080/960X90.js, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://s11.cnzz.com/z_stat.php?id=1260800068&web_id=1260800068, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://s11.cnzz.com/z_stat.php?id=1260800068&web_id=1260800068, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1260800068&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1260800068&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1254626350&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+A Parser-blocking, cross-origin script, http://c.cnzz.com/core.php?web_id=1254626350&t=z, is invoked via document.write. This may be blocked by the browser if the device has poor network connectivity.
+[15587:15618:1124/141739:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+[15587:15618:1124/141742:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+[15587:15618:1124/141759:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+[15587:15618:1124/141824:ERROR:socket_stream.cc(210)] Closing stream with result -100
+[15587:15817:1124/141828:ERROR:get_updates_processor.cc(244)] PostClientToServerMessage() failed during GetUpdates
+[15587:15618:1124/141829:ERROR:upload_data_presenter.cc(77)] Not implemented reached in virtual void extensions::RawDataPresenter::FeedNext(const net::UploadElementReader &)
+[15587:15817:1124/141835:ERROR:get_updates_processor.cc(244)] PostClientToServerMessage() failed during GetUpdates
+[15587:15618:1124/141835:ERROR:connection_factory_impl.cc(367)] Failed to connect to MCS endpoint with error -130
