@@ -1,6 +1,9 @@
  //获取web应用上下文
 var rootpath="/"+document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).substring(document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).indexOf('/')+1,document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).length).substring(0,document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).substring(document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).indexOf('/')+1,document.location.href.substring(document.location.href.indexOf('//')+2,document.location.href.length).length).indexOf('/'));
-var dyhttpaddr="http://localhost:8081";
+var dybdhttpaddr="http://localhost:8081";
+var dynwhttpaddr="http://192.168.18.25/rest/3.0"
+var dygwhttpaddr="http://dongya.rocedar.com//rest/3.0"
+	
 /////////////////////////////////////////
 
 var dongya = {

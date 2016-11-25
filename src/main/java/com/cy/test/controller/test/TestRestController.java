@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cy.test.result.JsonObjectResult;
+import com.cy.test.result.BasicResult;
 import com.cy.util.CyUtil;
 
 @RestController
@@ -28,7 +28,7 @@ public class TestRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/test/rest/", method = RequestMethod.POST)
-	public JsonObjectResult testRest(@RequestParam(value = "url", defaultValue = "-1") String url,
+	public BasicResult testRest(@RequestParam(value = "url", defaultValue = "-1") String url,
 			@RequestParam(value = "type", defaultValue = "GET") String type,
 			@RequestParam(value = "headers", defaultValue = "-1") String headerstr,
 			@RequestParam(value = "paramstr", defaultValue = "-1") String paramstr,
@@ -36,7 +36,7 @@ public class TestRestController {
 
 		logger.debug("url:" + url);
 		logger.debug("type:" + type);
-		logger.debug("params" + paramstr);
+		logger.debug("params: " + paramstr);
 		String response = "";
 		List<NameValuePair> params = null;
 		if (!"-1".equals(paramstr)) {
@@ -66,11 +66,11 @@ public class TestRestController {
 			} catch (Exception e) {
 				logger.error("接口调用异常, \n url=" + url + "\n type=" + type + "\n headerstr=" + headerstr + "\n paramstr="
 						+ paramstr, e);
-				return null;
+				return new BasicResult(-1, "接口调用失败. ||| " + e.getMessage());
 			}
 		}
 
-		return null;
+		return new BasicResult(0, "接口调用成功. 返回信息:" + response);
 		// String response = "";
 		// List<NameValuePair> params = new ArrayList<NameValuePair>();
 		// params.add(new BasicNameValuePair("token", token));
