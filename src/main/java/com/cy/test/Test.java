@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -64,14 +62,15 @@ public class Test {
 	private static final String PREFIX = "\\u";
 
 	public static void main(String[] args) {
-		System.out.println("----------");
-		System.out.println(HRSQuery());
-		System.out.println("++++++++++");
+//		System.out.println("----------");
+//		System.out.println(HRSCreart());
+//		System.out.println(HRSQuery());
+//		System.out.println("++++++++++");
 		// lexinBindDevice();
 		// lexinUnbindDevice();
 
 		try {
-			// getLexinStep();
+			 getLexinStep();
 			// bindDnurseXing("");
 			// register37("114611487582158779");
 			// bind37("114611487582158779", "F862951024692239", "0000", "000");
@@ -92,11 +91,11 @@ public class Test {
 		checksumParams.add(new BasicNameValuePair("timestamp", timestamp));
 		String appSecret = "db679fc16c9e3af3aaeea70669f02a2d797d047b";
 		String checksum = getLexinSign(checksumParams, appSecret);
-		url = url + "?app_id=" + appId + "&acess_token=" + accessToken + "&timestamp=" + timestamp + "&checksum="
+		url = url + "?app_id=" + appId + "&access_token=" + accessToken + "&timestamp=" + timestamp + "&checksum="
 				+ checksum;
 		JSONObject entityJson = new JSONObject();
 		entityJson.put("openid", "1ea13c52529b67a4f338894e26149f39f7718991");
-		entityJson.put("day", "2016-11-21");
+		entityJson.put("day", "2016-11-29");
 		System.out.println("url:\n" + url);
 		System.out.println("参数:\n" + entityJson.toString());
 		String result = lexinHttpPost(url, null, null, entityJson.toString());
@@ -347,9 +346,7 @@ public class Test {
 			}
 			if (entityString != null) {
 				StringEntity entity = new StringEntity(entityString, "utf-8");// 解决中文乱码问题
-				entity.setContentEncoding("UTF-8");
 				entity.setContentType("application/json");
-
 				hp.setEntity(entity);
 			}
 			CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -429,10 +426,10 @@ public class Test {
 		String memberId = "test1";
 		String memberName = "王军";
 		String memberType = "OPEN"; // OPEN-开通 UN_SUBSCRIBE-退订
-		String certType = "1"; // 1-身份证 2-其他
+		String certType = ""; // 1-身份证 2-其他
 		String certNo = "";
 		String mobile = "15900098586";
-		String sex = "1"; // 0-未知 ҅1-男 2-女
+		String sex = ""; // 0-未知 ҅1-男 2-女
 		String source = VHS_SOURCE; // 默认来源方公司简称
 		String remark = ""; // 备注
 		String sign = MessageUtils.toMD5Hex(memberId + certNo + source + secret);
