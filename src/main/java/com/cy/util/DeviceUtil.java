@@ -37,219 +37,244 @@ import net.sf.json.JSONObject;
  */
 public class DeviceUtil {
 
-    private static Logger logger = LogManager.getLogger(DeviceUtil.class);
+	private static Logger logger = LogManager.getLogger(DeviceUtil.class);
 
-    /**
-     * 公用httpGet方法
-     * 
-     * @param url
-     * @param params
-     * @return
-     * @throws Exception
-     */
-    public static String httpGet(String url, List<NameValuePair> params, Map<String, String> headers) throws Exception {
-        URIBuilder uri = new URIBuilder(url);
-        if (params != null) {
-            uri.setParameters(params);
-        }
-        HttpGet hg = new HttpGet(uri.build().toString());
-        if (headers != null) {
-            Set<String> keys = headers.keySet();
-            for (Iterator<String> i = keys.iterator(); i.hasNext();) {
-                String key = (String) i.next();
-                hg.addHeader(key, headers.get(key));
-            }
-        }
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        CloseableHttpResponse response = null;
-        response = httpClient.execute(hg);
-        HttpEntity responseEntity = response.getEntity();
-        String reponseString = EntityUtils.toString(responseEntity, "utf-8");
-        return reponseString;
-    }
+	/**
+	 * 公用httpGet方法
+	 * 
+	 * @param url
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public static String httpGet(String url, List<NameValuePair> params, Map<String, String> headers) throws Exception {
+		URIBuilder uri = new URIBuilder(url);
+		if (params != null) {
+			uri.setParameters(params);
+		}
+		HttpGet hg = new HttpGet(uri.build().toString());
+		if (headers != null) {
+			Set<String> keys = headers.keySet();
+			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
+				String key = (String) i.next();
+				hg.addHeader(key, headers.get(key));
+			}
+		}
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		CloseableHttpResponse response = null;
+		response = httpClient.execute(hg);
+		HttpEntity responseEntity = response.getEntity();
+		String reponseString = EntityUtils.toString(responseEntity, "utf-8");
+		return reponseString;
+	}
 
-    /**
-     * 公用httpPost方法
-     * 
-     * @param url
-     * @param params
-     * @param headers
-     * @param entity
-     * @return
-     * @throws Exception
-     */
-    public static String httpPost(String url, List<NameValuePair> params, Map<String, String> headers, String entity)
-            throws Exception {
-        HttpPost hp = new HttpPost(url);
-        if (params != null) {
-            hp.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-        }
-        if (headers != null) {
-            Set<String> keys = headers.keySet();
-            for (Iterator<String> i = keys.iterator(); i.hasNext();) {
-                String key = (String) i.next();
-                hp.addHeader(key, headers.get(key));
-            }
-        }
-        if (entity != null) {
-            hp.setEntity(new StringEntity(entity, Charset.forName("UTF-8")));
-        }
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        CloseableHttpResponse response = null;
-        response = httpClient.execute(hp);
-        HttpEntity responseEntity = response.getEntity();
-        String reponseString = EntityUtils.toString(responseEntity, "utf-8");
-        return reponseString;
-    }
+	/**
+	 * 公用httpPost方法
+	 * 
+	 * @param url
+	 * @param params
+	 * @param headers
+	 * @param entity
+	 * @return
+	 * @throws Exception
+	 */
+	public static String httpPost(String url, List<NameValuePair> params, Map<String, String> headers, String entity)
+			throws Exception {
+		HttpPost hp = new HttpPost(url);
+		if (params != null) {
+			hp.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+		}
+		if (headers != null) {
+			Set<String> keys = headers.keySet();
+			for (Iterator<String> i = keys.iterator(); i.hasNext();) {
+				String key = (String) i.next();
+				hp.addHeader(key, headers.get(key));
+			}
+		}
+		if (entity != null) {
+			hp.setEntity(new StringEntity(entity, Charset.forName("UTF-8")));
+		}
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		CloseableHttpResponse response = null;
+		response = httpClient.execute(hp);
+		HttpEntity responseEntity = response.getEntity();
+		String reponseString = EntityUtils.toString(responseEntity, "utf-8");
+		return reponseString;
+	}
 
-    /**
-     * 计算token具体到期时间
-     * 
-     * @param expiresIn
-     * @return
-     */
-    public static Long getExpireTime(int expiresIn) {
-        Calendar now = Calendar.getInstance();
-        now.add(Calendar.SECOND, expiresIn);
-        Long expireTime = Long.parseLong(DateFormatUtils.format(now, "yyyyMMddHHmmss"));
-        return expireTime;
-    }
+	/**
+	 * 计算token具体到期时间
+	 * 
+	 * @param expiresIn
+	 * @return
+	 */
+	public static Long getExpireTime(int expiresIn) {
+		Calendar now = Calendar.getInstance();
+		now.add(Calendar.SECOND, expiresIn);
+		Long expireTime = Long.parseLong(DateFormatUtils.format(now, "yyyyMMddHHmmss"));
+		return expireTime;
+	}
 
-    /**
-     * 时间戳转日期，格式化
-     *
-     * @param millisecond
-     *            毫秒
-     * @param format
-     *            yyyyMMddHHmmss
-     * @return
-     */
-    public static String timeStamp2Date(String millisecond, String format) {
-        if (millisecond == null || millisecond.isEmpty() || millisecond.equals("null")) {
-            return "";
-        }
-        if (format == null || format.isEmpty())
-            format = "yyyyMMddHHmmss";
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
-        return sdf.format(new Date(Long.valueOf(millisecond)));
-    }
+	/**
+	 * 时间戳转日期，格式化
+	 *
+	 * @param millisecond
+	 *            毫秒
+	 * @param format
+	 *            yyyyMMddHHmmss
+	 * @return
+	 */
+	public static String timeStamp2Date(String millisecond, String format) {
+		if (millisecond == null || millisecond.isEmpty() || millisecond.equals("null")) {
+			return "";
+		}
+		if (format == null || format.isEmpty())
+			format = "yyyyMMddHHmmss";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		return sdf.format(new Date(Long.valueOf(millisecond)));
+	}
 
-    /**
-     * 设备数据写入日志文件-处理后日志
-     *
-     * @param userId
-     * @param companyId
-     * @param deviceId
-     * @param indicatorId
-     * @param value
-     * @param deriveData
-     * @param recordDate
-     * @param deviceDataJson
-     */
-    public static void deviceDataLogProcessed(long userId, int companyId, int deviceId, int indicatorId, String value,
-            String deriveData, int recordDate, JSONObject deviceDataJson) {
-        Properties deviceProperties;
-        try {
-            deviceProperties = ConfigUtils.loadProperties("hydevice.properties");
-            File file = new File(deviceProperties.getProperty("device.data.processed.logfile"));
-            // 处理过数据格式的日志.
-            String data = StringUtil.concat("|", userId, companyId, deviceId, indicatorId, value, deriveData,
-                    recordDate);
-            FileUtils.writeStringToFile(file, data + "\n", "UTF-8", true);
-        } catch (IOException e) {
-            logger.error("每天用户汇总数据,写入日志文件异常", e);
-        }
-    }
+	/**
+	 * 设备数据写入日志文件-处理后日志
+	 *
+	 * @param userId
+	 * @param companyId
+	 * @param deviceId
+	 * @param indicatorId
+	 * @param value
+	 * @param deriveData
+	 * @param recordDate
+	 * @param deviceDataJson
+	 */
+	public static void deviceDataLogProcessed(long userId, int companyId, int deviceId, int indicatorId, String value,
+			String deriveData, int recordDate, JSONObject deviceDataJson) {
+		Properties deviceProperties;
+		try {
+			deviceProperties = ConfigUtils.loadProperties("hydevice.properties");
+			File file = new File(deviceProperties.getProperty("device.data.processed.logfile"));
+			// 处理过数据格式的日志.
+			String data = StringUtil.concat("|", userId, companyId, deviceId, indicatorId, value, deriveData,
+					recordDate);
+			FileUtils.writeStringToFile(file, data + "\n", "UTF-8", true);
+		} catch (IOException e) {
+			logger.error("每天用户汇总数据,写入日志文件异常", e);
+		}
+	}
 
-    /**
-     * 设备数据写入日志文件-设备接口原始数据
-     *
-     * @param userId
-     * @param companyId
-     * @param deviceId
-     * @param indicatorId
-     * @param value
-     * @param deriveData
-     * @param recordDate
-     * @param deviceDataJson
-     */
-    public static void deviceDataLogInterface(long userId, int companyId, int deviceId, int indicatorId, int recordDate,
-            String interfaceData) {
-        Properties deviceProperties;
-        try {
-            deviceProperties = ConfigUtils.loadProperties("hydevice.properties");
-            File file = new File(deviceProperties.getProperty("device.data.interface.logfile"));
-            // 接口返回原始数据日志.
-            String interfaceLogData = StringUtil.concat("|", userId, companyId, deviceId, indicatorId, interfaceData,
-                    recordDate);
-            FileUtils.writeStringToFile(file, interfaceLogData + "\n", "UTF-8", true);
-        } catch (IOException e) {
-            logger.error("每天用户汇总数据,写入日志文件异常", e);
-        }
-    }
+	/**
+	 * 设备数据写入日志文件-设备接口原始数据
+	 *
+	 * @param userId
+	 * @param companyId
+	 * @param deviceId
+	 * @param indicatorId
+	 * @param value
+	 * @param deriveData
+	 * @param recordDate
+	 * @param deviceDataJson
+	 */
+	public static void deviceDataLogInterface(long userId, int companyId, int deviceId, int indicatorId, int recordDate,
+			String interfaceData) {
+		Properties deviceProperties;
+		try {
+			deviceProperties = ConfigUtils.loadProperties("hydevice.properties");
+			File file = new File(deviceProperties.getProperty("device.data.interface.logfile"));
+			// 接口返回原始数据日志.
+			String interfaceLogData = StringUtil.concat("|", userId, companyId, deviceId, indicatorId, interfaceData,
+					recordDate);
+			FileUtils.writeStringToFile(file, interfaceLogData + "\n", "UTF-8", true);
+		} catch (IOException e) {
+			logger.error("每天用户汇总数据,写入日志文件异常", e);
+		}
+	}
 
-    /**
-     * 格式化当前时间yyyyMMddHHmmss
-     * 
-     * @return
-     */
-    public static long formatNowtime(String style) {
-        Calendar now = Calendar.getInstance();
-        return Long.parseLong(DateFormatUtils.format(now, style));
-    }
+	/**
+	 * 格式化当前时间yyyyMMddHHmmss
+	 * 
+	 * @return
+	 */
+	public static long formatNowtime(String style) {
+		Calendar now = Calendar.getInstance();
+		return Long.parseLong(DateFormatUtils.format(now, style));
+	}
 
-    // /**
-    // * 时间戳转换成日期格式字符串
-    // * @param seconds 精确到秒的字符串
-    // * @param formatStr
-    // * @return
-    // */
-    // public static String timeStamp2Date(String seconds,String format) {
-    // if(seconds == null || seconds.isEmpty() || seconds.equals("null")){
-    // return "";
-    // }
-    // if(format == null || format.isEmpty()) format = "yyyy-MM-dd HH:mm:ss";
-    // SimpleDateFormat sdf = new SimpleDateFormat(format);
-    // return sdf.format(new Date(Long.valueOf(seconds+"000")));
-    // }
-    /**
-     * 日期格式字符串转换成时间戳
-     * 
-     * @param date
-     *            字符串日期
-     * @param format
-     *            如：yyyy-MM-dd HH:mm:ss
-     * @return
-     */
-    public static String date2TimeStamp(String date_str, String format) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(format);
-            return String.valueOf(sdf.parse(date_str).getTime() / 1000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
+	// /**
+	// * 时间戳转换成日期格式字符串
+	// * @param seconds 精确到秒的字符串
+	// * @param formatStr
+	// * @return
+	// */
+	// public static String timeStamp2Date(String seconds,String format) {
+	// if(seconds == null || seconds.isEmpty() || seconds.equals("null")){
+	// return "";
+	// }
+	// if(format == null || format.isEmpty()) format = "yyyy-MM-dd HH:mm:ss";
+	// SimpleDateFormat sdf = new SimpleDateFormat(format);
+	// return sdf.format(new Date(Long.valueOf(seconds+"000")));
+	// }
+	/**
+	 * 日期格式字符串转换成时间戳
+	 * 
+	 * @param date
+	 *            字符串日期
+	 * @param format
+	 *            如：yyyy-MM-dd HH:mm:ss
+	 * @return
+	 */
+	public static String date2TimeStamp(String date_str, String format) {
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+			return String.valueOf(sdf.parse(date_str).getTime() / 1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
 
-    /**
-     * 取得当前时间戳（精确到秒）
-     * 
-     * @return
-     */
-    public static String nowtimeStamp() {
-        long time = System.currentTimeMillis();
-        String t = String.valueOf(time / 1000);
-        return t;
-    }
+	/**
+	 * 取得当前时间戳（精确到秒）
+	 * 
+	 * @return
+	 */
+	public static String nowtimeStamp() {
+		long time = System.currentTimeMillis();
+		String t = String.valueOf(time / 1000);
+		return t;
+	}
 
-    /**
-     * 格式化瑰柏日期（yyyymmdd）转换为（yyyy-mm-dd）
-     *
-     * @param date
-     * @return
-     */
-    public static String formatGbDate(String date) {
-        return date.substring(0, 4) + "-" + date.substring(4, 6) + "-" + date.substring(6, 8);
-    }
+	/**
+	 * 格式化瑰柏日期（yyyymmdd）转换为（yyyy-mm-dd）
+	 *
+	 * @param date
+	 * @return
+	 */
+	public static String formatGbDate(String date) {
+		return date.substring(0, 4) + "-" + date.substring(4, 6) + "-" + date.substring(6, 8);
+	}
+
+	/**
+	 * 日期计算
+	 * 
+	 * @param dateStr
+	 *            yyyymmdd
+	 * @param years
+	 *            年偏移
+	 * @param months
+	 *            月偏移
+	 * @param days
+	 *            日偏移
+	 * @throws Exception
+	 */
+	public static String addDate(String dateStr, int years, int months, int days) throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Date dt = sdf.parse(dateStr);
+		Calendar rightNow = Calendar.getInstance();
+		rightNow.setTime(dt);
+		rightNow.add(Calendar.YEAR, years);// 日期减1年 -1
+		rightNow.add(Calendar.MONTH, months);// 日期加3个月 3
+		rightNow.add(Calendar.DAY_OF_YEAR, days);// 日期加10天 10
+		Date dt1 = rightNow.getTime();
+		return sdf.format(dt1);
+	}
 
 }

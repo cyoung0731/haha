@@ -8,19 +8,24 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -29,7 +34,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 
 import com.cy.util.CyUtil;
 import com.cy.util.DeviceUtil;
@@ -62,15 +66,16 @@ public class Test {
 	private static final String PREFIX = "\\u";
 
 	public static void main(String[] args) {
-//		System.out.println("----------");
-//		System.out.println(HRSCreart());
-//		System.out.println(HRSQuery());
-//		System.out.println("++++++++++");
+		// System.out.println("----------");
+		// System.out.println(HRSCreart());
+		// System.out.println(HRSQuery());
+		// System.out.println("++++++++++");
 		// lexinBindDevice();
 		// lexinUnbindDevice();
 
 		try {
-			 getLexinStep();
+			// getLexinStep();
+			System.out.println(dealDateFormat("2016-11-29T16:00:00.000+00:00"));
 			// bindDnurseXing("");
 			// register37("114611487582158779");
 			// bind37("114611487582158779", "F862951024692239", "0000", "000");
@@ -78,6 +83,50 @@ public class Test {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * 二逼日期格式
+	 * 
+	 * @param oldDateStr
+	 * @return
+	 * @throws ParseException
+	 */
+	public static String dealDateFormat(String oldDateStr) throws ParseException {
+		// 此格式只有 jdk 1.7才支持 yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"); // yyyy-MM-dd'T'HH:mm:ss.SSSZ
+		Date date = df.parse(oldDateStr);
+		SimpleDateFormat df1 = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK);
+		Date date1 = df1.parse(date.toString());
+		DateFormat df2 = new SimpleDateFormat("yyyyMMdd");
+		// Date date3 = df2.parse(date1.toString());
+		return df2.format(date1);
+	}
+
+	/**
+	 * 日期计算
+	 * 
+	 * @param dateStr
+	 *            yyyymmdd
+	 * @param years
+	 *            年偏移
+	 * @param months
+	 *            月偏移
+	 * @param days
+	 *            日偏移
+	 * @throws Exception
+	 */
+	private static void addDate(String dateStr, int years, int months, int days) throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Date dt = sdf.parse(dateStr);
+		Calendar rightNow = Calendar.getInstance();
+		rightNow.setTime(dt);
+		rightNow.add(Calendar.YEAR, years);// 日期减1年
+		rightNow.add(Calendar.MONTH, months);// 日期加3个月
+		rightNow.add(Calendar.DAY_OF_YEAR, days);// 日期加10天
+		Date dt1 = rightNow.getTime();
+		String reStr = sdf.format(dt1);
+		System.out.println(reStr);
 	}
 
 	private static void getLexinStep() throws Exception {
@@ -436,14 +485,14 @@ public class Test {
 
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("memberId", memberId));
-		 params.add(new BasicNameValuePair("memberName", memberName));
+		params.add(new BasicNameValuePair("memberName", memberName));
 		params.add(new BasicNameValuePair("memberType", memberType));
 		// params.add(new BasicNameValuePair("certType", certType));
-		 params.add(new BasicNameValuePair("certNo", certNo));
+		params.add(new BasicNameValuePair("certNo", certNo));
 		params.add(new BasicNameValuePair("mobile", mobile));
 		// params.add(new BasicNameValuePair("sex", sex));
 		params.add(new BasicNameValuePair("source", source));
-		 params.add(new BasicNameValuePair("remark", remark));
+		params.add(new BasicNameValuePair("remark", remark));
 		params.add(new BasicNameValuePair("sign", sign));
 
 		String response = "";

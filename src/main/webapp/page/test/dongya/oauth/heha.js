@@ -40,7 +40,6 @@ function bind(dyhttpaddr) {
             paramstr: paramstr
         },
         success: function(data) {
-            alert(JSON.stringify(data))
             $("#resultDiv").val(JSON.stringify(data));
         }
     });
@@ -67,7 +66,6 @@ function getStep(httpaddr) {
             paramstr: paramstr
         },
         success: function(data) {
-            alert(JSON.stringify(data))
             $("#resultDiv").val(JSON.stringify(data));
         }
     });
