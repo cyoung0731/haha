@@ -8,7 +8,7 @@
 
 echo "----------------------------------------"
 echo "上传haha工程开始  `date '+%Y-%m-%d %H:%M:%S'`"
-cd /home/zcy/dev/git/haha
+cd `pwd`
 git pull
 git add .
 git commit -m "add file `date '+%Y-%m-%d %H:%M:%S'`"
