@@ -17,6 +17,9 @@ $(document).ready(function() {
     $("#getSteplocalBtn").click(function() {
         getStep(dybdhttpaddr);
     });
+    $("#sendSteplocalBtn").click(function() {
+        sendStep(dybdhttpaddr);
+    });
     $("#startdate").val(CurentDate());
     $("#enddate").val(CurentDate());
     getUserId();
@@ -67,6 +70,32 @@ function getStep(httpaddr) {
         },
         success: function(data) {
             $("#resultDiv").val(JSON.stringify(data));
+        }
+    });
+}
+
+// 发送本地步数数据
+function sendStep(httpaddr) {
+    var userId = $("#userid").val().trim();
+    var deviceId = 1217001;
+    var targetTypeId = 1000;
+    var targetId = 40000;
+    var tasktId = 3000;
+    var startDate = $("#startdate").val().trim();
+    var endDate = $("#enddate").val().trim();
+    var url = httpaddr + "/device/send/data/";
+    var paramstr = "userId=" + userId + "&deviceId=" + deviceId + "&targetTypeId=" + targetTypeId + "&targetId=" + targetId + "&startDate=" + startDate + "&endDate=" + endDate;
+    $.ajax({
+        url: rootpath + "/test/rest/",
+        type: "POST",
+        dataType: "json",
+        data: {
+            url: url,
+            type: "get",
+            paramstr: paramstr
+        },
+        success: function(data) {
+            $("#resultDiv").val("已发送消息，看日志");
         }
     });
 }
