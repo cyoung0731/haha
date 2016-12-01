@@ -9,8 +9,9 @@
 echo "----------------------------------------"
 echo "上传haha工程开始  `date '+%Y-%m-%d %H:%M:%S'`"
 cd `pwd`
+echo `pwd`
 git pull
-git add .
+git add --all .
 git commit -m "add file `date '+%Y-%m-%d %H:%M:%S'`"
 git push
 echo "上传haha工程结束 `date '+%Y-%m-%d %H:%M:%S'`"
