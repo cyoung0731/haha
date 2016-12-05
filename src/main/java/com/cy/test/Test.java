@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -26,6 +27,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -34,6 +36,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import com.cy.util.CyUtil;
 import com.cy.util.DeviceUtil;
@@ -75,7 +78,7 @@ public class Test {
 
 		try {
 			// getLexinStep();
-			System.out.println(dealDateFormat("2016-11-29T16:00:00.000+00:00"));
+			testheha();
 			// bindDnurseXing("");
 			// register37("114611487582158779");
 			// bind37("114611487582158779", "F862951024692239", "0000", "000");
@@ -83,6 +86,50 @@ public class Test {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	// application/x-www-form-urlencoded
+	// application/x-www-form-urlencoded​
+
+	// compile group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
+	public static void testheha() {
+		String url = "https://login.iheha.com/v1/auth/token";
+		List<NameValuePair> params = null;
+		HttpPost hp = new HttpPost(url);
+		Map<String, String> headers = new HashMap<String, String>();
+		headers.put("cache-control", "no-cache");
+		headers.put("content-type", "application/x-www-form-urlencoded");
+		String entityString = "client_id=qIsXvvLCtJFAyZ8gmeNxLdnjMXOtimMe&client_secret=Oy7s5YCSkE2Xf0DeglWj0rRpZVdWRChT&grant_type=refresh_token&refresh_token=ca9d4536445ca2ad79dc27110bea18d71ad29f4805b3361f6ec75a496001b8cd";
+		try {
+			String response = CyUtil.httpPost(url, null, headers, entityString);
+			System.out.println(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// CloseableHttpResponse response = null;
+		// try {
+		// if (params != null) {
+		// hp.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+		// }
+		// if (headers != null) {
+		// Set<String> keys = headers.keySet();
+		// for (Iterator<String> i = keys.iterator(); i.hasNext();) {
+		// String key = (String) i.next();
+		// hp.addHeader(key, headers.get(key));
+		// }
+		// }
+		// if (entityString != null) {
+		// StringEntity entity = new StringEntity(entityString, "utf-8");// 解决中文乱码问题
+		// hp.setEntity(entity);
+		// }
+		// CloseableHttpClient httpClient = HttpClients.createDefault();
+		// response = httpClient.execute(hp);
+		// HttpEntity responseEntity = response.getEntity();
+		// String reponseString = EntityUtils.toString(responseEntity, "utf-8");
+		// System.out.println(reponseString);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	/**
