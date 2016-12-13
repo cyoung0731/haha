@@ -70,15 +70,15 @@ public class Test {
 
 	public static void main(String[] args) {
 		// System.out.println("----------");
-		// System.out.println(HRSCreart());
-		// System.out.println(HRSQuery());
+//		 System.out.println(HRSCreart());
+		 System.out.println(HRSQuery());
 		// System.out.println("++++++++++");
 		// lexinBindDevice();
 		// lexinUnbindDevice();
 
 		try {
 			// getLexinStep();
-			testheha();
+			// testheha();
 			// bindDnurseXing("");
 			// register37("114611487582158779");
 			// bind37("114611487582158779", "F862951024692239", "0000", "000");
@@ -491,7 +491,7 @@ public class Test {
 		String url = VHS_ADDR + "api/member/query";
 		String secret = VHS_SECRET;
 
-		String memberId = "test1";
+		String memberId = "114000000022117411";
 		String memberType = "OPEN"; // OPEN-开通 UN_SUBSCRIBE-退订
 		String source = VHS_SOURCE; // 默认来源方公司简称
 		String sign = MessageUtils.toMD5Hex(memberId + source + secret);
@@ -519,12 +519,12 @@ public class Test {
 
 		String secret = VHS_SECRET;
 		// String memberId = UUID.randomUUID().toString();
-		String memberId = "test1";
+		String memberId = "114000000022117411";
 		String memberName = "王军";
 		String memberType = "OPEN"; // OPEN-开通 UN_SUBSCRIBE-退订
 		String certType = ""; // 1-身份证 2-其他
 		String certNo = "";
-		String mobile = "15900098586";
+		String mobile = "18611286597";
 		String sex = ""; // 0-未知 ҅1-男 2-女
 		String source = VHS_SOURCE; // 默认来源方公司简称
 		String remark = ""; // 备注
