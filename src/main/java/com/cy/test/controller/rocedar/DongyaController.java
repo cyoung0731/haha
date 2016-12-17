@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cy.test.bean.MqBean;
-import com.cy.test.cache.UserCache;
+import com.cy.test.cache.UserCacheDongya;
 import com.cy.test.result.JsonObjectResult;
 import com.cy.test.service.rocedar.DongyaService;
 import com.cy.util.CyUtil;
@@ -46,7 +46,7 @@ public class DongyaController {
 		String userId = dongyaService.getUseridByPhone(phone);
 		result.put("userid", userId);
 		try {
-			String token = UserCache.getUserCache().getTokenByUserId(Long.valueOf(userId));
+			String token = UserCacheDongya.getUserCache().getTokenByUserId(Long.valueOf(userId));
 			result.put("token", token);
 		} catch (Exception e) {
 			result.put("token", "获取token出错");

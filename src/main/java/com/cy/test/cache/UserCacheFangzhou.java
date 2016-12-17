@@ -22,16 +22,16 @@ import net.sf.json.JSONObject;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-public class UserCache extends RedisCache {
+public class UserCacheFangzhou extends RedisCache {
 
-	private Logger logger = LogManager.getLogger(UserCache.class);
+	private Logger logger = LogManager.getLogger(UserCacheFangzhou.class);
 
-	private static UserCache userCache = new UserCache();
+	private static UserCacheFangzhou userCache = new UserCacheFangzhou();
 
-	private UserCache() {
+	private UserCacheFangzhou() {
 	}
 
-	public static UserCache getUserCache() throws RedisException, FileException {
+	public static UserCacheFangzhou getUserCache() throws RedisException, FileException {
 		if (userCache.getJedisPool() == null) {
 			userCache.initJedisPool();
 		}
@@ -43,7 +43,7 @@ public class UserCache extends RedisCache {
 	 */
 	@Override
 	public void initJedisPool() throws RedisException, FileException {
-		Properties redisProperties = ConfigUtils.loadProperties("redis.properties");
+		Properties redisProperties = ConfigUtils.loadProperties("redis-fangzhou.properties");
 		JedisPoolConfig poolConfig = RedisAPI.getPoolConfig(redisProperties);
 		JedisPool jedisPool = RedisAPI.getJedisPool(redisProperties.getProperty("redis.uri.user"), poolConfig);
 		userCache.setJedisPool(jedisPool);
@@ -255,7 +255,7 @@ public class UserCache extends RedisCache {
 	 * @throws FileException
 	 */
 	public List<String> getAioSuggest(long userId, long dataTime) throws RedisException, FileException {
-		Map<String, String> cachedSuggests = UserCache.getUserCache()
+		Map<String, String> cachedSuggests = UserCacheFangzhou.getUserCache()
 				.hgetall("aio:report:suggest:" + userId + ":" + dataTime);
 
 		List<String> result = new ArrayList<String>();
@@ -308,7 +308,7 @@ public class UserCache extends RedisCache {
 				hkeys[2 * i] = indicatorId + ":lastest";
 				hkeys[2 * i + 1] = indicatorId + ":value";
 			}
-			List<String> indicatorInfos = UserCache.getUserCache().hmget("indicator:" + userId, hkeys);
+			List<String> indicatorInfos = UserCacheFangzhou.getUserCache().hmget("indicator:" + userId, hkeys);
 
 			// 封装返回值
 			for (int i = 0; i < indicatorSize; i++) {

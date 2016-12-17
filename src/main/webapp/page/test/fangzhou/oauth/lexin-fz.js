@@ -6,19 +6,22 @@ $(document).ready(function() {
         getUserId();
     });
     $("#bindlocalBtn").click(function() {
-        bind(dybdhttpaddr);
+        bind(fzbdhttpaddr);
     });
     $("#bindneiwangBtn").click(function() {
-        bind(dynwhttpaddr);
+        bind(fznwhttpaddr);
     });
     $("#bindgongwangBtn").click(function() {
-        bind(dygwhttpaddr);
+        bind(fzgwhttpaddr);
     });
     $("#getSteplocalBtn").click(function() {
-        getStep(dybdhttpaddr);
+    	sendData(fzbdhttpaddr,4000);
     });
     $("#sendSteplocalBtn").click(function() {
-        sendStep(dybdhttpaddr);
+    	sendData(fzbdhttpaddr,4000);
+    });
+    $("#sendSleeplocalBtn").click(function() {
+    	sendData(fzbdhttpaddr,4009);
     });
     $("#startdate").val(CurentDate());
     $("#enddate").val(CurentDate());
@@ -26,12 +29,12 @@ $(document).ready(function() {
 });
 
 // 绑定
-function bind(dyhttpaddr) {
+function bind(httpaddr) {
     var token = $("#token").val().trim();
     var code = $("#code").val().trim();
-    var device_id = 1217002;
+    var device_id = $("#device_id").val().trim();
     var bind_type = 1;
-    var url = dyhttpaddr + "/device/bind/";
+    var url = httpaddr + "/hy/device/bind/";
     var paramstr = "token=" + token + "&code=" + code + "&device_id=" + device_id + "&bind_type=" + bind_type;
     $.ajax({
         url: rootpath + "/test/rest/",
@@ -51,7 +54,7 @@ function bind(dyhttpaddr) {
 // 获取步数数据
 function getStep(httpaddr) {
     var userId = $("#userid").val().trim();
-    var deviceId = 1217001;
+    var device_id = $("#device_id").val().trim();
     var targetTypeId = 1000;
     var targetId = 40000;
     var tasktId = 3000;
@@ -75,16 +78,14 @@ function getStep(httpaddr) {
 }
 
 // 发送本地步数数据
-function sendStep(httpaddr) {
+function sendData(httpaddr,indicator_id) {
     var userId = $("#userid").val().trim();
-    var deviceId = 1217001;
-    var targetTypeId = 1000;
-    var targetId = 40000;
-    var tasktId = 3000;
+    var device_id = $("#device_id").val().trim();
+    var company_id = $("#company_id").val().trim();
     var startDate = $("#startdate").val().trim();
     var endDate = $("#enddate").val().trim();
-    var url = httpaddr + "/device/send/data/";
-    var paramstr = "userId=" + userId + "&deviceId=" + deviceId + "&targetTypeId=" + targetTypeId + "&targetId=" + targetId + "&startDate=" + startDate + "&endDate=" + endDate;
+    var url = httpaddr + "/hy/device/send/data/";
+    var paramstr = "userId=" + userId + "&deviceId=" + device_id + "&indicatorId=" + indicator_id + "&startDate=" + startDate + "&endDate=" + endDate;
     $.ajax({
         url: rootpath + "/test/rest/",
         type: "POST",
@@ -104,7 +105,7 @@ function sendStep(httpaddr) {
 function getUserId() {
     var phone = $("#phone").val().trim();
     $.ajax({
-        url: rootpath + "/dongya/getUserByPhone/",
+        url: rootpath + "/fangzhou/getUseridByPhone/",
         type: "GET",
         dataType: "json",
         data: {

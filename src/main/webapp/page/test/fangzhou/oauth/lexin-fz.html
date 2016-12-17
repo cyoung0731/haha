@@ -19,13 +19,13 @@
 <body>
     <div>
         <p>
-            <a href="/haha/page/test/dongya/dongya_index.html">返回动吖首页</a>
+            <a href="/haha/page/test/dongya/fangzhou_index.html">返回立方首页</a>
         </p>
     </div>
-    <div>Heha绑定</div>
+    <div>乐心运动绑定</div>
     <div>
         <p>
-            <a href="https://login.iheha.com/grant?client_id=qIsXvvLCtJFAyZ8gmeNxLdnjMXOtimMe&redirect_uri=http://dongya.rocedar.com/device/oauth2/1217001/&response_type=code&scope=step%20sleep%20hrv%20breath&state=2934">heha登录验证页面</a>
+            <a href="http://localhost:8082/hy/device/oauth2/code/1204001/">乐心1登录验证页面</a>
             <br>
             <br>
             <br> <span>phone</span>
@@ -33,10 +33,15 @@
             <a id="getUserIdBtn" href="javascript:void(0)">获取userId和token</a>
             <br /> userid
             <input id="userid" type="text" placeholder="" value="" />
+            <br /> company_id
+            <input id="company_id" type="text" placeholder="" value="1" />
             <br /> token
             <input id="token" type="text" placeholder="" value="" />
             <br> code
             <input id="code" type="text" placeholder="" value="code" />
+            <br>deviceId
+            <input id="device_id" type="text" placeholder="" value="1204005" />
+            乐心运动1204001，乐心Mambo 1204004，乐心Mambo HR 1204005，乐心Mambo Watch 1204006
             <br>
         </p>
         <p>
@@ -52,6 +57,8 @@
         <a id="getSteplocalBtn" href="javascript:void(0)">获取数据-步数-本地</a>
         <br />
         <a id="sendSteplocalBtn" href="javascript:void(0)">发送消息-步数-本地</a>
+        <br />
+        <a id="sendSleeplocalBtn" href="javascript:void(0)">发送消息-睡眠-本地</a>
     </div>
     <div>
         <textarea rows="10" cols="100" id="resultDiv"></textarea>
@@ -59,7 +66,7 @@
     <div id="deivcesTable"></div>
 </body>
 <script type="application/javascript" src="/haha/static/js/jquery-1.12.4.min.js"></script>
-<script type="application/javascript" src="/haha/static/js/common/common.js?v=2"></script>
-<script type="application/javascript" src="heha.js?v=12"></script>
+<script type="application/javascript" src="/haha/static/js/common/common.js?v=3"></script>
+<script type="application/javascript" src="lexin-fz.js?v=23"></script>
 
 </html>

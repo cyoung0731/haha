@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cy.test.cache.UserCacheFangzhou;
 import com.cy.test.result.JsonObjectResult;
 import com.cy.test.service.huanyi.FangzhouService;
 import com.cy.util.CyUtil;
@@ -40,7 +41,15 @@ public class FangzhouController {
     public JsonObjectResult getUseridByPhone(@RequestParam(value = "phone", defaultValue = "-1") String phone) {
         fangzhouService.getUseridByPhone(phone);
         JSONObject result = new JSONObject();
-        result.put("userid", fangzhouService.getUseridByPhone(phone));
+        String userId = fangzhouService.getUseridByPhone(phone);
+		result.put("userid", userId);
+        try {
+			String token = UserCacheFangzhou.getUserCache().getTokenByUserId(Long.valueOf(userId));
+			result.put("token", token);
+		} catch (Exception e) {
+			result.put("token", "获取token出错");
+			return new JsonObjectResult(-1, result);
+		} 
         return new JsonObjectResult(0, result);
     }
 
