@@ -51,6 +51,7 @@ function upload() {
 	var hp = $("#hp").val().trim();
 	var lp = $("#lp").val().trim();
 	var xl = $("#xl").val().trim();
+	var xy = $("#xy").val().trim();
 	$.ajax({
 		url : rootpath + "/fangzhou/aio/shuangjia/upload/",
 		type : "GET",
@@ -63,7 +64,8 @@ function upload() {
 			bmi : bmi,
 			hp : hp,
 			lp : lp,
-			xl : xl
+			xl : xl,
+			xy: xy
 		},
 		success : function(data) {
 		}
