@@ -15,7 +15,10 @@ $(document).ready(function() {
         bind(dygwhttpaddr);
     });
     $("#getSteplocalBtn").click(function() {
-        getStep(dybdhttpaddr);
+        getStep(dybdhttpaddr,1000);
+    });
+    $("#getSleeplocalBtn").click(function() {
+        getStep(dybdhttpaddr,1005);
     });
     $("#sendSteplocalBtn").click(function() {
         sendStep(dybdhttpaddr);
@@ -48,11 +51,10 @@ function bind(dyhttpaddr) {
     });
 }
 
-// 获取步数数据
-function getStep(httpaddr) {
+// 获取数据
+function getStep(httpaddr,targetTypeId) {
     var userId = $("#userid").val().trim();
-    var deviceId = 1217001;
-    var targetTypeId = 1000;
+    var deviceId = $("#device_id").val().trim();
     var targetId = 40000;
     var tasktId = 3000;
     var startDate = $("#startdate").val().trim();
@@ -77,7 +79,7 @@ function getStep(httpaddr) {
 // 发送本地步数数据
 function sendStep(httpaddr) {
     var userId = $("#userid").val().trim();
-    var deviceId = 1217001;
+    var deviceId = $("#device_id").val().trim();
     var targetTypeId = 1000;
     var targetId = 40000;
     var tasktId = 3000;
