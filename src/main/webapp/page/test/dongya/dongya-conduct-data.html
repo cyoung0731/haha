@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- apple devices fullscreen -->
+</head>
+
+<body>
+    <div>
+        <p>
+            <a href="/haha/page/test/dongya/dongya_index.html">返回动吖首页</a>
+        </p>
+    </div>
+    <div>造行为数据</div>
+    <div>
+        <p>
+            <br> <span>phone</span>
+            <input id="phone" type="text" placeholder="" value="18611286597" />
+            <a id="getUserIdBtn" href="javascript:void(0)">获取userId和token</a>
+            <br /> userid
+            <input id="userid" type="text" placeholder="" value="" />
+            <br /> token
+            <input id="token" type="text" placeholder="" value="" />
+            <br /> conductId
+            <input id="conductId" type="text" placeholder="" value="2000" />步行：2000，跑步：2001，睡眠：2002
+            <br />deviceId
+            <input id="deviceId" type="text" placeholder="" value="1204005" />select * from gb_device;
+            <br />date
+            <input id="date" type="text" placeholder="" value="" />
+            <br />
+            ------步行数据-----
+			<br />
+			步数<input id="step-count" type="text" placeholder="" value="10000" />
+            <br />
+            步行距离（千米）<input id="step-distance" type="text" placeholder="" value="5.8" />
+            <br />
+            步行卡路里（千卡）<input id="step-calorie" type="text" placeholder="" value="70.3" />
+            <br />
+            <a id="bindlocalBtn" href="javascript:void(0)">造步行数据-本地</a>
+            
+            
+            
+            
+        </p>
+        <p>
+            <a id="bindlocalBtn" href="javascript:void(0)">绑定-本地</a> <a id="bindneiwangBtn" href="javascript:void(0)">绑定-内网</a> <a id="bindgongwangBtn" href="javascript:void(0)">绑定-公网</a>
+        </p>
+        <HR style="FILTER: alpha(opacity = 100, finishopacity = 0, style = 3)" width="50%" color=#987cb9 SIZE=3 align="left">
+        <p>获取步数数据</p>
+        startdate
+        <input id="startdate" type="text" placeholder="" value="" />
+        <br /> enddata
+        <input id="enddate" type="text" placeholder="" value="" />
+        <br />
+        <a id="getSteplocalBtn" href="javascript:void(0)">获取数据-步数-本地</a>
+        <a id="getSleeplocalBtn" href="javascript:void(0)">获取数据-睡眠-本地</a>
+        <br />
+        <a id="sendSteplocalBtn" href="javascript:void(0)">发送消息-步数-本地</a>
+        <a id="sendSleeplocalBtn" href="javascript:void(0)">发送消息-睡眠-本地</a>
+    </div>
+    <div>
+        <textarea rows="10" cols="100" id="resultDiv"></textarea>
+    </div>
+    <div id="deivcesTable"></div>
+</body>
+<script type="application/javascript" src="/haha/static/js/jquery-1.12.4.min.js"></script>
+<script type="application/javascript" src="/haha/static/js/common/common.js?v=2"></script>
+<script type="application/javascript" src="dongya-conduct-data.js?v=1"></script>
+
+</html>
