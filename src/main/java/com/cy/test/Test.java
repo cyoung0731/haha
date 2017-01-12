@@ -69,9 +69,17 @@ public class Test {
 	private static final String PREFIX = "\\u";
 
 	public static void main(String[] args) {
+		float Height = 1.70f;
+		float Weight = 60;
+		float Imp = 595;
+		int Age = 23;
+		float a = (float) (60.3 - 486583 * Height * Height / Weight / Imp + 9.146 * Weight / Height / Height / Imp
+				- 251.193 * Height * Height / Weight / Age + 1625303 / Imp / Imp - 0.0139 * Imp + 0.05975 * Age);
+		System.out.println(a);
+
 		// System.out.println("----------");
-//		 System.out.println(HRSCreart());
-		 System.out.println(HRSQuery());
+		// System.out.println(HRSCreart());
+		// System.out.println(HRSQuery());
 		// System.out.println("++++++++++");
 		// lexinBindDevice();
 		// lexinUnbindDevice();
